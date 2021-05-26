@@ -1,0 +1,79 @@
+{
+  "id": "2569961",
+  "name": "assistant_react",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3617522",
+      "name": "日历 ",
+      "font_class": "rili",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "6069567",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "12459560",
+      "name": "抛硬币",
+      "font_class": "paoyingbi",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "12760423",
+      "name": "吃饭",
+      "font_class": "chifan",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "13599636",
+      "name": "stream list",
+      "font_class": "streamlist-copy-copy",
+      "unicode": "ea7d",
+      "unicode_decimal": 60029
+    },
+    {
+      "icon_id": "15287648",
+      "name": "铅笔",
+      "font_class": "qianbi",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "17323426",
+      "name": "羽毛",
+      "font_class": "yumao",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "18298090",
+      "name": "设置",
+      "font_class": "shezhi1",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "20586364",
+      "name": "皮肤",
+      "font_class": "pifu",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "20911461",
+      "name": "记账",
+      "font_class": "bill",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}
