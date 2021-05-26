@@ -1,0 +1,5 @@
+$color1: #009999;
+
+@mixin colorBase($color: #009999) {
+    color: $color;
+}
