@@ -1,11 +1,15 @@
 import { Component } from 'react'
-import { Drawer, List, NavBar } from 'antd-mobile';
+import React from 'react'
+import { Drawer, List } from 'antd-mobile';
 import Pic from '../../assets/image/tx2.png'
 import './index.scss'
+
+import Skinchange from './component/skinChange/index'
 
 export default class Home extends Component {
     state = {
         docked: false,
+        skinDrawer: false
     }
     onDock = () => {
         this.setState({
@@ -13,11 +17,21 @@ export default class Home extends Component {
         });
     }
 
+    handleSkinChange() {
+        console.log(this.skinchange.current.showModal('skinModal')())
+    }
+
     handleSkip = (path) => {
-        this.setState({
-            docked: !this.state.docked,
-        });
-        this.props.history.push(path)
+
+        if (path === '/skin') {
+            this.handleSkinChange();
+        } else {
+            this.props.history.push(path)
+        }
+    }
+    constructor(props) {
+        super(props);
+        this.skinchange = React.createRef();
     }
 
     render() {
@@ -90,7 +104,7 @@ export default class Home extends Component {
             <Drawer
                 className="my-drawer"
                 style={{ minHeight: document.documentElement.clientHeight, }}
-                contentStyle={{ color: '#009999', textAlign: 'center', paddingTop: 42 }}
+                contentStyle={{ textAlign: 'center', paddingTop: 42 }}
                 sidebar={sidebar}
                 open={this.state.docked}
                 onOpenChange={this.onDock}
@@ -109,6 +123,7 @@ export default class Home extends Component {
                     })}
 
                 </div>
+                <Skinchange ref={this.skinchange}></Skinchange>
             </Drawer>
         </div>);
     }

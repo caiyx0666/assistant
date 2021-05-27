@@ -1,5 +1,69 @@
 $color1: #009999;
+$color2: #ef4134;
+$color3: #108ee8;
+$color4: #f4317e;
+$color5: #f46a00;
+$color6: #7265e5;
+$color7: #febe00;
+$color8: #00a854;
+$color9: #2e3238;
 
-@mixin colorBase($color: #009999) {
-    color: $color;
+@mixin base_color{
+  [data-theme="color1"] & {
+   color: $color1;
+  }
+  [data-theme="color2"] & {
+    color: $color2;
+  }
+  [data-theme="color3"] & {
+    color: $color3;
+  }
+  [data-theme="color4"] & {
+    color: $color4;
+  }
+  [data-theme="color5"] & {
+    color: $color5;
+  }
+  [data-theme="color6"] & {
+    color: $color6;
+  }
+  [data-theme="color7"] & {
+    color: $color7;
+  }
+  [data-theme="color8"] & {
+    color: $color8;
+  }
+  [data-theme="color9"] & {
+    color: $color9;
+  }
+}
+
+@mixin base_bg_color{
+  [data-theme="color1"] & {
+   background-color: $color1;
+  }
+  [data-theme="color2"] & {
+    background-color: $color2;
+  }
+  [data-theme="color3"] & {
+    background-color: $color3;
+  }
+  [data-theme="color4"] & {
+    background-color: $color4;
+  }
+  [data-theme="color5"] & {
+    background-color: $color5;
+  }
+  [data-theme="color6"] & {
+    background-color: $color6;
+  }
+  [data-theme="color7"] & {
+    background-color: $color7;
+  }
+  [data-theme="color8"] & {
+    background-color: $color8;
+  }
+  [data-theme="color9"] & {
+    background-color: $color9;
+  }
 }

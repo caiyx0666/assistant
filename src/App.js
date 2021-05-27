@@ -12,6 +12,14 @@ import Skin from './pages/Skin';
 import Settings from './pages/Settings';
 
 export default class App extends Component {
+  componentDidMount() {
+    const theme = window.localStorage.getItem('theme');
+    if (!theme) {
+      window.document.documentElement.setAttribute('data-theme', 'color1');
+    } else {
+      window.document.documentElement.setAttribute('data-theme', theme);
+    }
+  }
   render() {
     return (
       <Router>
