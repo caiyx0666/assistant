@@ -90,8 +90,17 @@
   font-size: 12px;
 
   i {
+    position: relative;
     font-size: 30px;
-    padding-bottom: 16px;
+    margin-bottom: 16px;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-35%);
+      font-size: 12px;
+    }
   }
 }
 

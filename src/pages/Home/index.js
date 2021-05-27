@@ -36,8 +36,8 @@ export default class Home extends Component {
 
     render() {
         const menuList = [{
-            icon: 'icon-rili',
-            text: '日历',
+            icon: 'icon-RectangleCopy',
+            text: '今日事，今日毕',
             path: '/calendar'
         }, {
             icon: 'icon-chifan',
@@ -116,7 +116,9 @@ export default class Home extends Component {
                     {menuList.map((item, index) => {
                         return (
                             <div className={'menu-item ' + (!((index + 1) % 3) ? '' : 'menu-item-border')} key={item.path} onClick={this.handleSkip.bind(this, item.path)}>
-                                <i className={'iconfont ' + item.icon}></i>
+                                <i className={'iconfont ' + item.icon}>
+                                    {item.path === '/calendar' ? <span>{new Date().getDate()}</span> : ''}
+                                </i>
                                 <span>{item.text}</span>
                             </div>
                         )
