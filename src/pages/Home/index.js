@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import React from 'react'
-import { Drawer, List } from 'antd-mobile';
 import Pic from '../../assets/image/tx2.png'
 import './index.scss'
 
@@ -67,66 +66,24 @@ export default class Home extends Component {
             path: '/settings'
         }]
 
-        const sidebar = (<List>
-            <List.Item
-                key={0}
-                style={{ backgroundColor: '#161d20', height: '60px' }}
-            >
-                <span style={{ color: '#81898c', fontSize: '14px', fontWeight: '600' }}>
-                    我的个人助手系统
-                </span>
-            </List.Item>
-            <List.Item key={1}
-                thumb={(<i className='iconfont icon-shouye' style={{ fontSize: '16px' }}></i>)}
-                style={{ backgroundColor: '#161d20', color: '#fff' }}
-                activeStyle={{ backgroundColor: "#232e32" }}
-                onClick={this.handleSkip.bind(this, '/home')}
-            >首页</List.Item>
-            {(menuList.map((item, index) => {
-                return (
-
-                    <List.Item key={index + 2}
-                        thumb={(<i className={'iconfont ' + item.icon} style={{ fontSize: '16px' }}></i>)}
-                        style={{ backgroundColor: '#161d20', color: '#fff' }}
-                        activeStyle={{ backgroundColor: "#232e32" }}
-                        onClick={this.handleSkip.bind(this, item.path)}
-                    >{item.text}</List.Item>
-                )
-            }))
-            }
-        </List>);
-
         return (<div style={{ height: '100%' }}>
-            <div className="nav-bar">
-                <i className="iconfont icon-streamlist-copy-copy" onClick={this.onDock}></i>
-                Home
+            <div className="tx-box">
+                <img src={Pic} className="tx-img" alt='加载失败' />
             </div>
-            <Drawer
-                className="my-drawer"
-                style={{ minHeight: document.documentElement.clientHeight, }}
-                contentStyle={{ textAlign: 'center', paddingTop: 42 }}
-                sidebar={sidebar}
-                open={this.state.docked}
-                onOpenChange={this.onDock}
-            >
-                <div className="tx-box">
-                    <img src={Pic} className="tx-img" alt='加载失败' />
-                </div>
-                <div className="home-menu-wrapper" style={{ paddingBottom: '30px' }}>
-                    {menuList.map((item, index) => {
-                        return (
-                            <div className={'menu-item ' + (!((index + 1) % 3) ? '' : 'menu-item-border')} key={item.path} onClick={this.handleSkip.bind(this, item.path)}>
-                                <i className={'iconfont ' + item.icon}>
-                                    {item.path === '/calendar' ? <span>{new Date().getDate()}</span> : ''}
-                                </i>
-                                <span>{item.text}</span>
-                            </div>
-                        )
-                    })}
+            <div className="home-menu-wrapper" style={{ paddingBottom: '30px' }}>
+                {menuList.map((item, index) => {
+                    return (
+                        <div className={'menu-item ' + (!((index + 1) % 3) ? '' : 'menu-item-border')} key={item.path} onClick={this.handleSkip.bind(this, item.path)}>
+                            <i className={'iconfont ' + item.icon}>
+                                {item.path === '/calendar' ? <span>{new Date().getDate()}</span> : ''}
+                            </i>
+                            <span>{item.text}</span>
+                        </div>
+                    )
+                })}
 
-                </div>
-                <Skinchange ref={this.skinchange}></Skinchange>
-            </Drawer>
+            </div>
+            <Skinchange ref={this.skinchange}></Skinchange>
         </div>);
     }
 }

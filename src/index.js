@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
+import { HashRouter as Router } from 'react-router-dom'
+
 import './index.css'
 import 'antd-mobile/dist/antd-mobile.css'
 
@@ -9,6 +11,6 @@ import 'antd-mobile/dist/antd-mobile.css'
 import './assets/fonts/iconfont.css'
 
 ReactDOM.render(
-  <App />,
+  <Router><App /></Router>,
   document.getElementById('root')
 );
