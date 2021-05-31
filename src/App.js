@@ -79,26 +79,26 @@ class App extends Component {
     const sidebar = (<List>
       <List.Item
         key={0}
-        style={{ backgroundColor: '#161d20', height: '60px' }}
+        style={{ backgroundColor: '#161d20', height: '1.75rem' }}
       >
-        <span style={{ color: '#81898c', fontSize: '14px', fontWeight: '600' }}>
+        <span style={{ color: '#81898c', fontSize: '.375rem', fontWeight: '600' }}>
           我的个人助手系统
                 </span>
       </List.Item>
       <List.Item key={1}
-        thumb={(<i className='iconfont icon-shouye' style={{ fontSize: '16px' }}></i>)}
+        thumb={(<i className='iconfont icon-shouye' style={{ fontSize: '.4375rem' }}></i>)}
         style={{ backgroundColor: '#161d20', color: '#fff' }}
         activeStyle={{ backgroundColor: "#232e32" }}
         onClick={this.handleSkip.bind(this, '/home')}
-      ><span style={{ color: '#fff', fontSize: '13px' }}>首页</span></List.Item>
+      ><span style={{ color: '#fff', fontSize: '.34375rem' }}>首页</span></List.Item>
       {(menuList.map((item, index) => {
         return (
           item.path === '/skin' ? '' : <List.Item key={index + 2}
-            thumb={(<i className={'iconfont ' + item.icon} style={{ fontSize: '16px' }}></i>)}
+            thumb={(<i className={'iconfont ' + item.icon} style={{ fontSize: '.4375rem' }}></i>)}
             style={{ backgroundColor: '#161d20', color: '#fff' }}
             activeStyle={{ backgroundColor: "#232e32" }}
             onClick={this.handleSkip.bind(this, item.path)}
-          ><span style={{ color: '#fff', fontSize: '13px' }}>{item.text}</span></List.Item>
+          ><span style={{ color: '#fff', fontSize: '.34375rem' }}>{item.text}</span></List.Item>
         )
       }))
       }
@@ -114,7 +114,7 @@ class App extends Component {
           <Drawer
             className="my-drawer"
             style={{ minHeight: document.documentElement.clientHeight, }}
-            contentStyle={{ textAlign: 'center', paddingTop: 42, backgroundColor: '#f5f5f9' }}
+            contentStyle={{ textAlign: 'center', paddingTop: '1.25rem', backgroundColor: '#f5f5f9' }}
             sidebar={sidebar}
             open={this.state.docked}
             onOpenChange={this.onDock}

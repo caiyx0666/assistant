@@ -22,9 +22,9 @@ export default class btnBottm extends Component {
     render() {
 
         const sidebar = (<List>
-            <List.Item style={{ borderBottom: '1px solid #efeff3' }} className="list-modal-item" onClick={() => { this.props.handleClear(); this.onClose('listModal')() }}><div style={{ textAlign: 'center' }}>清空所有列表</div></List.Item>
-            <List.Item style={{ borderBottom: '1px solid #efeff3' }} className="list-modal-item" onClick={() => { this.props.handleClearTodo(); this.onClose('listModal')() }}><div style={{ textAlign: 'center' }}>清空todo列表</div></List.Item>
-            <List.Item style={{ borderBottom: '1px solid #efeff3' }} className="list-modal-item" onClick={() => { this.props.handleClearNone(); this.onClose('listModal')() }}><div style={{ textAlign: 'center' }}>清空done列表</div></List.Item>
+            <List.Item style={{ borderBottom: '1px solid #efeff3', height: '.875rem' }} className="list-modal-item" onClick={() => { this.props.handleClear(); this.onClose('listModal')() }}><div style={{ textAlign: 'center' }}>清空所有列表</div></List.Item>
+            <List.Item style={{ borderBottom: '1px solid #efeff3', height: '.875rem' }} className="list-modal-item" onClick={() => { this.props.handleClearTodo(); this.onClose('listModal')() }}><div style={{ textAlign: 'center' }}>清空todo列表</div></List.Item>
+            <List.Item style={{ borderBottom: '1px solid #efeff3', height: '.875rem' }} className="list-modal-item" onClick={() => { this.props.handleClearNone(); this.onClose('listModal')() }}><div style={{ textAlign: 'center' }}>清空done列表</div></List.Item>
         </List>)
 
         return (
@@ -36,7 +36,7 @@ export default class btnBottm extends Component {
                     onClose={this.onClose('listModal')}
                     animationType="slide-up"
                     showModal={this.showModal}
-                    footer={[{ text: '取消', onPress: () => { console.log('ok'); this.onClose('listModal')(); } }]}
+                    footer={[{ text: '取消', onPress: () => { this.onClose('listModal')(); } }]}
                 >
                     {sidebar}
 

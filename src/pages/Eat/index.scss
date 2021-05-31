@@ -1,0 +1,27 @@
+.eat-wrapper {
+    h2 {
+        @include base_color;
+        @include base_h_style;
+    }
+
+    .add-box {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 .25rem;
+        height: .875rem;
+        margin: .5625rem 0;
+
+        .add-input {
+            flex: 1;
+        }
+
+        .add-btn {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

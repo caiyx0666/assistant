@@ -139,12 +139,12 @@ export default class TodoList extends Component {
                                             {i.label}
                                         </CheckboxItem>)}
                                         onClick={() => { }}
-                                        extra={(i.edit ? <Button type="primary" size="small" style={{ width: '60px' }} onClick={this.handleConfirm.bind(this, index)}>确定</Button> : <i className="iconfont icon-qianbi" style={{ fontSize: '20px' }} onClick={this.handleEdit.bind(this, index)}></i>)}
+                                        extra={(i.edit ? <Button type="primary" size="small" style={{ width: '1.8125rem' }} onClick={this.handleConfirm.bind(this, index)}>确定</Button> : <i className="iconfont icon-qianbi" style={{ fontSize: '.5625rem' }} onClick={this.handleEdit.bind(this, index)}></i>)}
                                     >{''}</List.Item>
                                 )
                             }) : <List.Item
                                 key={0}
-                            ><span style={{ paddingLeft: '10px', fontSize: '14px', color: '#888' }}>暂无事项</span></List.Item>
+                            ><span style={{ paddingLeft: '.25rem', fontSize: '.375rem', color: '#888' }}>暂无事项</span></List.Item>
                     }
 
                 </List>
@@ -164,7 +164,7 @@ export default class TodoList extends Component {
                             )
                         }) : <List.Item
                             key={0}
-                        ><span style={{ paddingLeft: '10px', fontSize: '14px', color: '#888' }}>暂无完成事项</span></List.Item>}
+                        ><span style={{ paddingLeft: '.25rem', fontSize: '.375rem', color: '#888' }}>暂无完成事项</span></List.Item>}
                 </List>
             </div>
         )

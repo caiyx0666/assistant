@@ -1,5 +1,8 @@
 'use strict';
 
+// rem
+const px2rem = require('postcss-px2rem');
+
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
@@ -133,6 +136,8 @@ module.exports = function (webpackEnv) {
             // so that it honors browserslist config in package.json
             // which in turn let's users customize the target behavior as per their needs.
             postcssNormalize(),
+            // 移动端适配
+            px2rem({ remUnit: 75 })
           ],
           sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
         },

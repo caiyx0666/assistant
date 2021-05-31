@@ -70,7 +70,7 @@ export default class Home extends Component {
             <div className="tx-box">
                 <img src={Pic} className="tx-img" alt='加载失败' />
             </div>
-            <div className="home-menu-wrapper" style={{ paddingBottom: '30px' }}>
+            <div className="home-menu-wrapper" style={{ paddingBottom: '.875rem' }}>
                 {menuList.map((item, index) => {
                     return (
                         <div className={'menu-item ' + (!((index + 1) % 3) ? '' : 'menu-item-border')} key={item.path} onClick={this.handleSkip.bind(this, item.path)}>
