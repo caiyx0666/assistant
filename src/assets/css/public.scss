@@ -188,3 +188,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after,
 html:not([data-scale]) .am-list-item:not(:last-child) .am-list-line::after {
     display: none !important;
 }
+
+.am-modal-button-group-v .am-modal-button {
+  @include base_color();
+}

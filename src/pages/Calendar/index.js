@@ -4,6 +4,7 @@ import { InputItem } from 'antd-mobile'
 import './index.scss'
 
 import TodoList from './component/TodoList'
+import BtnBottom from './component/button-bottom'
 
 export default class Calendar extends Component {
 
@@ -47,6 +48,7 @@ export default class Calendar extends Component {
             <div className="todo-list">
                 <TodoList ref={this.todoList}></TodoList>
             </div>
+            <BtnBottom handleClear={() => { this.todoList.current.handleClear() }} handleClearTodo={() => { this.todoList.current.handleClearTodo() }} handleClearNone={() => { this.todoList.current.handleClearNone() }}></BtnBottom>
         </div>)
     }
 }

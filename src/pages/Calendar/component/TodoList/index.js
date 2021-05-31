@@ -78,6 +78,34 @@ export default class TodoList extends Component {
         window.localStorage.setItem('TODOLIST', JSON.stringify(this.state.data))
     }
 
+    handleClear() {
+        this.setState({
+            data: []
+        }, () => {
+            this.setDate()
+        })
+    }
+
+    handleClearTodo = () => {
+        this.setState({
+            data: this.state.data.filter(item => {
+                return item.checked
+            })
+        }, () => {
+            this.setDate()
+        })
+    }
+
+    handleClearNone = () => {
+        this.setState({
+            data: this.state.data.filter(item => {
+                return !item.checked
+            })
+        }, () => {
+            this.setDate()
+        })
+    }
+
     componentDidMount() {
         this.upDate();
     }
