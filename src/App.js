@@ -90,7 +90,7 @@ class App extends Component {
         style={{ backgroundColor: '#161d20', color: '#fff' }}
         activeStyle={{ backgroundColor: "#232e32" }}
         onClick={this.handleSkip.bind(this, '/home')}
-      >首页</List.Item>
+      ><span style={{ color: '#fff', fontSize: '13px' }}>首页</span></List.Item>
       {(menuList.map((item, index) => {
         return (
           item.path === '/skin' ? '' : <List.Item key={index + 2}
@@ -98,7 +98,7 @@ class App extends Component {
             style={{ backgroundColor: '#161d20', color: '#fff' }}
             activeStyle={{ backgroundColor: "#232e32" }}
             onClick={this.handleSkip.bind(this, item.path)}
-          >{item.text}</List.Item>
+          ><span style={{ color: '#fff', fontSize: '13px' }}>{item.text}</span></List.Item>
         )
       }))
       }
@@ -114,7 +114,7 @@ class App extends Component {
           <Drawer
             className="my-drawer"
             style={{ minHeight: document.documentElement.clientHeight, }}
-            contentStyle={{ textAlign: 'center', paddingTop: 42 }}
+            contentStyle={{ textAlign: 'center', paddingTop: 42, backgroundColor: '#f5f5f9' }}
             sidebar={sidebar}
             open={this.state.docked}
             onOpenChange={this.onDock}

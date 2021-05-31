@@ -67,3 +67,124 @@ $color9: #2e3238;
     background-color: $color9;
   }
 }
+
+@mixin base_border_color{
+  [data-theme="color1"] & {
+   border: 1px solid $color1;
+  }
+  [data-theme="color2"] & {
+    border: 1px solid $color2;
+  }
+  [data-theme="color3"] & {
+    border: 1px solid $color3;
+  }
+  [data-theme="color4"] & {
+    border: 1px solid $color4;
+  }
+  [data-theme="color5"] & {
+    border: 1px solid $color5;
+  }
+  [data-theme="color6"] & {
+    border: 1px solid $color6;
+  }
+  [data-theme="color7"] & {
+    border: 1px solid $color7;
+  }
+  [data-theme="color8"] & {
+    border: 1px solid $color8;
+  }
+  [data-theme="color9"] & {
+    border: 1px solid $color9;
+  }
+}
+
+.nav-bar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45px;
+    @include base_bg_color;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 16px;
+    z-index: 3;
+
+    i {
+        position: absolute;
+        left: 0px;
+        font-size: 25px;
+        padding-left: 10px;
+    }
+}
+
+#root {
+  .am-list-item .am-input-control input {
+      font-size: 14px;
+  }
+
+  .am-button-primary {
+      @include base_bg_color;
+      @include base_border_color;
+  }
+
+  .am-button-primary.am-button-active {
+    background-color: #009191;
+  }
+
+  .am-list-item.am-input-item {
+    height: 100%;
+    min-height: 0px;
+    padding-left: 8px;
+  }
+
+  .am-button-small {
+    padding: 0 10px;
+  }
+
+  .my-drawer {
+      position: relative;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+
+      .am-drawer-sidebar {
+        background-color: #161d20;
+        box-sizing: border-box;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+
+          .am-list {
+              width: 230px;
+              padding: 0;
+          }
+      }
+  }
+
+  .am-drawer.am-drawer-left {
+      .am-drawer-draghandle {
+        width: 0;
+      }
+      .am-drawer-sidebar {
+        left: -1px;
+      }
+  } 
+
+  .am-list-item .am-list-line .am-list-content {
+      color: #333;
+      font-size: 14px;
+  }
+
+  .am-checkbox.am-checkbox-checked .am-checkbox-inner {
+    @include base_bg_color();
+    @include base_border_color();
+  }
+
+}
+
+html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after,
+html:not([data-scale]) .am-list-item:not(:last-child) .am-list-line::after {
+    display: none !important;
+}

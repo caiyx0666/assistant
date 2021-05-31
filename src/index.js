@@ -4,7 +4,7 @@ import App from './App';
 
 import { HashRouter as Router } from 'react-router-dom'
 
-import './index.css'
+import './index.scss'
 import 'antd-mobile/dist/antd-mobile.css'
 
 // 引入字体图标

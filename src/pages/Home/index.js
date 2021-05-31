@@ -66,7 +66,7 @@ export default class Home extends Component {
             path: '/settings'
         }]
 
-        return (<div style={{ height: '100%' }}>
+        return (<div className="home-wrapper" style={{ height: '100%' }}>
             <div className="tx-box">
                 <img src={Pic} className="tx-img" alt='加载失败' />
             </div>
