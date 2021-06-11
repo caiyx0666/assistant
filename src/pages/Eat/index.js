@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { InputItem } from 'antd-mobile'
 import './index.scss'
+import Title from '../../components/Title'
 
 export default class Eat extends Component {
     state = {
@@ -111,7 +112,6 @@ export default class Eat extends Component {
 
         function startscroll() {
             var nowTime = new Date().getTime();
-            // speed = ((1 - (nowTime - startTime) / num)) * (200 - 20)
 
             if ((nowTime - startTime) >= num) {
                 clearInterval(timer)
@@ -127,8 +127,6 @@ export default class Eat extends Component {
             } else if ((nowTime - startTime) >= (num / 3)) {
                 speed += 50
             }
-
-            console.log(speed)
 
             if (this.state.active < 7) {
                 this.setState({
@@ -151,29 +149,6 @@ export default class Eat extends Component {
 
         }
 
-        // timer = setInterval(() => {
-        //     speed -= 20;
-
-        //     if (nowTime - startTime >= num) {
-        //         clearInterval(timer)
-        //         this.setState({
-        //             timerInt: null
-        //         })
-        //         return
-        //     }
-
-        //     if (this.state.active < 7) {
-        //         this.setState({
-        //             active: this.state.active + 1
-        //         })
-        //     } else {
-        //         this.setState({
-        //             active: 0
-        //         })
-        //     }
-
-        // }, speed)
-
         this.setState({
             timerInt: timer
         })
@@ -181,7 +156,7 @@ export default class Eat extends Component {
 
     render() {
         return (<div className="eat-wrapper">
-            <h2>今天吃什么</h2>
+            <Title>今天吃什么</Title>
             <span style={{ color: '#999', fontSize: '.34375rem' }}>从此不再纠结</span>
             <div className="lucky-draw">
                 {this.state.foodList.map((item, index) => {

@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2569961 */
-  src: url('iconfont.woff2?t=1623222235882') format('woff2'),
-       url('iconfont.woff?t=1623222235882') format('woff'),
-       url('iconfont.ttf?t=1623222235882') format('truetype');
+  src: url('iconfont.woff2?t=1623397213393') format('woff2'),
+       url('iconfont.woff?t=1623397213393') format('woff'),
+       url('iconfont.ttf?t=1623397213393') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,58 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lvyou:before {
+  content: "\e647";
+}
+
+.icon-lingshi:before {
+  content: "\e626";
+}
+
+.icon-shejiao:before {
+  content: "\e615";
+}
+
+.icon-jiaotong:before {
+  content: "\e69e";
+}
+
+.icon-zufang:before {
+  content: "\e611";
+}
+
+.icon-canyin:before {
+  content: "\e6e1";
+}
+
+.icon-gouwu:before {
+  content: "\e718";
+}
+
+.icon-changbei:before {
+  content: "\e614";
+}
+
+.icon-shuiguo:before {
+  content: "\e64e";
+}
+
+.icon-riyong:before {
+  content: "\e612";
+}
+
+.icon-up-fill:before {
+  content: "\e606";
+}
+
+.icon-up-fill1:before {
+  content: "\e607";
+}
+
+.icon-tongxin:before {
+  content: "\e730";
 }
 
 .icon-kaishi:before {

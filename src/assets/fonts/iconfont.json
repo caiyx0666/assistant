@@ -6,6 +6,97 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "657318",
+      "name": "分期－旅游",
+      "font_class": "lvyou",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "1079491",
+      "name": "零食",
+      "font_class": "lingshi",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "3120051",
+      "name": "社交",
+      "font_class": "shejiao",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "8361282",
+      "name": "交通",
+      "font_class": "jiaotong",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "11226730",
+      "name": "租房",
+      "font_class": "zufang",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "11666805",
+      "name": "餐饮",
+      "font_class": "canyin",
+      "unicode": "e6e1",
+      "unicode_decimal": 59105
+    },
+    {
+      "icon_id": "12218923",
+      "name": "购物",
+      "font_class": "gouwu",
+      "unicode": "e718",
+      "unicode_decimal": 59160
+    },
+    {
+      "icon_id": "12575789",
+      "name": "长辈",
+      "font_class": "changbei",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "12617795",
+      "name": "水果",
+      "font_class": "shuiguo",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "17568708",
+      "name": "日用",
+      "font_class": "riyong",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "19558505",
+      "name": "向上",
+      "font_class": "up-fill",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "19670489",
+      "name": "向上",
+      "font_class": "up-fill1",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "20249187",
+      "name": "通信",
+      "font_class": "tongxin",
+      "unicode": "e730",
+      "unicode_decimal": 59184
+    },
+    {
       "icon_id": "14321568",
       "name": "开始",
       "font_class": "kaishi",

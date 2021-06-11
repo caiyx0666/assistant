@@ -1,0 +1,6 @@
+.title {
+    @include base_color;
+    @include base_h_style;
+    margin: 0;
+    padding: .3125rem 0;
+}

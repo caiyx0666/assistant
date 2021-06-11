@@ -1,0 +1,45 @@
+.accounts-wrapper {
+
+    .total-wrapper {
+        position: fixed;
+        top: 1.25rem;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 .625rem .3125rem;
+        @include base_bg_color;
+        border-top: 1px solid #fff;
+        color: #fff;
+    }
+
+    .total-item {
+        text-align: left;
+        padding-left: .625rem;
+    }
+
+    .total-key {
+        font-size: .3125rem;
+        padding: .1875rem 0;
+    }
+
+    .total-val {
+        padding-right: .375rem;
+    }
+
+    .total-val-big {
+        font-size: .5625rem;
+    }
+
+    .total-val-small {
+        font-size: .34375rem;
+    }
+
+    .am-list-item .am-list-line .am-list-content {
+  display: flex;
+}
+
+.calendar-list .right {
+    float: right;
+}
+}

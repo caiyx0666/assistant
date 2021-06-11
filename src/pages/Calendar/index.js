@@ -5,6 +5,7 @@ import './index.scss'
 
 import TodoList from './component/TodoList'
 import BtnBottom from './component/button-bottom'
+import Title from '../../components/Title'
 
 export default class Calendar extends Component {
 
@@ -34,7 +35,7 @@ export default class Calendar extends Component {
 
     render() {
         return (<div className="calendar">
-            <h2>今日事，今日毕</h2>
+            <Title>今日事，今日毕</Title>
             <div className="input-box">
                 <InputItem
                     placeholder="今天做点什么好呢"
