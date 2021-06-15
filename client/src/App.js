@@ -83,7 +83,7 @@ class App extends Component {
       >
         <span style={{ color: '#81898c', fontSize: '.375rem', fontWeight: '600' }}>
           我的个人助手系统
-                </span>
+        </span>
       </List.Item>
       <List.Item key={1}
         thumb={(<i className='iconfont icon-shouye' style={{ fontSize: '.4375rem' }}></i>)}
@@ -109,11 +109,11 @@ class App extends Component {
         <Fragment>
           <div className="nav-bar">
             <i className="iconfont icon-streamlist-copy-copy" onClick={this.onDock}></i>
-                Home
-            </div>
+            Home
+          </div>
           <Drawer
             className="my-drawer"
-            style={{ minHeight: document.documentElement.clientHeight, }}
+            style={{ minHeight: document.documentElement.clientHeight, height: '100%' }}
             contentStyle={{ textAlign: 'center', paddingTop: '1.25rem', backgroundColor: '#f5f5f9' }}
             sidebar={sidebar}
             open={this.state.docked}

@@ -3,13 +3,14 @@ import { Component } from "react";
 import './index.scss'
 
 import { DatePicker } from 'antd-mobile'
+import BillItem from "./component/bill-item";
+
 
 // import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
 // GMT is not currently observed in the UK. So use UTC now.
-const utcNow = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
 const nowMouth = new Date().getMonth() + 1;
 const nowYear = new Date().getFullYear();
 
@@ -21,10 +22,36 @@ export default class Accounts extends Component {
         year: nowYear,
         date: now,
         time: now,
-        utcDate: utcNow,
-        dpValue: null,
-        customChildValue: null,
         visible: false,
+        billList: []
+    }
+
+    componentDidMount() {
+        this.setState({
+            billList: [
+                { createTime: 1623740461087, bill: [{ icon: 'icon-canyin', sum: -1.5, category: '餐饮' }, { icon: 'icon-canyin', sum: -1.5, category: '餐饮' }, { icon: 'icon-canyin', sum: -1.5, category: '餐饮' }] },
+                { createTime: 1623740461087, bill: [{ icon: 'icon-canyin', sum: -1.5, category: '餐饮' }, { icon: 'icon-canyin', sum: -1.5, category: '餐饮' }, { icon: 'icon-canyin', sum: -1.5, category: '餐饮' }] },
+            ]
+        }, () => {
+            let income = 0;
+            let disburse = 0;
+            this.state.billList.forEach(item => {
+                item.bill.forEach(e => {
+                    if (e.sum > 0) {
+                        income += e.sum
+                    } else {
+                        disburse += e.sum
+                    }
+                })
+            })
+
+
+
+            this.setState({
+                income,
+                disburse
+            })
+        })
     }
 
     handleConfirmDate = (date) => {
@@ -58,6 +85,7 @@ export default class Accounts extends Component {
         }
 
         const getIncomeDec = () => {
+            if (String(this.state.income).indexOf('.') === -1) return '00'
             let num;
             num = String(this.state.income).split('.')[1];
             return num;
@@ -69,6 +97,7 @@ export default class Accounts extends Component {
 
         const getDisburseDec = () => {
             let num;
+            if (String(this.state.disburse).indexOf('.') === -1) return '00'
             num = String(this.state.disburse).split('.')[1];
             return num;
         }
@@ -102,6 +131,13 @@ export default class Accounts extends Component {
                         <span className="total-val-small">{'.' + getDisburseDec()}</span>
                     </div>
                 </div>
+            </div>
+
+            <div className="accounts-main">
+                {this.state.billList.map((item, index) => {
+                    return (<BillItem bill={item.bill} createTime={item.createTime} key={index} ></BillItem>)
+                })}
+
             </div>
             <DatePicker
                 mode="month"
