@@ -112,7 +112,7 @@ const getAccounts = (callback) => {
  * @param {object} obj
  * @param {function} callback
  */
-const getAccounts = (obj, callback) => {
+const getMonthAccounts = (obj, callback) => {
     const { startTime, endTime } = obj
     connection.query('select * from accounts where createTime between ? and ?', [startTime, endTime], callback)
 }
@@ -158,4 +158,4 @@ const updataAccounts = (obj, callback) => {
 //     connection.query('update heros set isdelete = 1 where id = ? and isdelete = 0', [id], callback)
 // };
 
-module.exports = { getTodoList, getEat, getMemo, getAccounts, updataTodoList, updataEat, updataMemo, updataAccounts, delTodeList, delMemo, addTodoList, addMemo, addAccounts }
+module.exports = { getTodoList, getEat, getMemo, getAccounts, updataTodoList, updataEat, updataMemo, updataAccounts, delTodeList, delMemo, addTodoList, addMemo, addAccounts, getMonthAccounts }

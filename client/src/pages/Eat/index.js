@@ -2,6 +2,7 @@ import { Component } from "react";
 import { InputItem } from 'antd-mobile'
 import './index.scss'
 import Title from '../../components/Title'
+import $axios from '../../utils/axios'
 
 export default class Eat extends Component {
     state = {
@@ -24,15 +25,33 @@ export default class Eat extends Component {
         })
     }
 
-    getFoods = () => {
-        let foods = JSON.parse(window.localStorage.getItem('FOODLIST'));
+    getFoods = async () => {
+        let foods;
+        let res = await $axios.get('/getEatList')
+        if (res.data.status === 200) {
+            foods = res.data.data
+        }
+
+        foods = foods.map(item => {
+            return { ...item, edit: false }
+        })
         this.setState({
-            foodList: foods ? foods : [{ edit: false }, { edit: false }, { edit: false }, { edit: false }, { edit: false }, { edit: false }, { edit: false }, { edit: false }, { edit: false }]
+            foodList: foods
         })
     }
 
-    setFoods = () => {
-        window.localStorage.setItem('FOODLIST', JSON.stringify(this.state.foodList));
+    setFoods = (code) => {
+        this.state.foodList.forEach(item => {
+            if (item.code === code) {
+                $axios.post('/updateEat', {
+                    name: item.name,
+                    code: item.code
+                }).then(res => {
+                    console.log(res)
+                })
+            }
+        })
+        // window.localStorage.setItem('FOODLIST', JSON.stringify(this.state.foodList));
     }
 
     handleTouchStart(index) {
@@ -60,23 +79,23 @@ export default class Eat extends Component {
         })
     }
 
-    handleConfirm(index) {
+    handleConfirm(code) {
         this.setState({
             foodList: this.state.foodList.map((e, eIndex) => {
-                if (index === eIndex) {
+                if (code === e.code) {
                     e.edit = false
                 }
                 return e;
             })
         }, () => {
-            this.setFoods()
+            this.setFoods(code)
         })
     }
 
-    handleChange(index, val) {
+    handleChange(code, val) {
         this.setState({
             foodList: this.state.foodList.map((e, eIndex) => {
-                if (index === eIndex) {
+                if (code === e.code) {
                     e.name = val
                 }
                 return e;
@@ -84,16 +103,16 @@ export default class Eat extends Component {
         })
     }
 
-    handleBlur(index) {
+    handleBlur(code) {
         this.setState({
             foodList: this.state.foodList.map((e, eIndex) => {
-                if (index === eIndex) {
+                if (code === e.code) {
                     e.edit = false
                 }
                 return e;
             })
         }, () => {
-            this.setFoods()
+            this.setFoods(code)
         })
     }
 
@@ -161,28 +180,28 @@ export default class Eat extends Component {
             <div className="lucky-draw">
                 {this.state.foodList.map((item, index) => {
                     if (index === 4) {
-                        return (<div className="eat-select-item" key={index}>
+                        return (<div className="eat-select-item" key={item.code}>
                             <i className="iconfont icon-kaishi play-btn" onClick={this.play}></i>
                         </div>)
                     }
 
                     if (item.edit) {
-                        return (<div className="eat-select-item" key={index}>
+                        return (<div className="eat-select-item" key={item.code}>
                             <InputItem
                                 placeholder="输入你想吃的"
                                 value={item.name}
                                 ref={el => this.autoFocusInst = el}
                                 className="eat-input"
-                                onVirtualKeyboardConfirm={this.handleConfirm.bind(this, index)}
-                                onChange={this.handleChange.bind(this, index)}
-                                onBlur={this.handleBlur.bind(this, index)}
+                                onVirtualKeyboardConfirm={this.handleConfirm.bind(this, item.code)}
+                                onChange={this.handleChange.bind(this, item.code)}
+                                onBlur={this.handleBlur.bind(this, item.code)}
                                 clear
                             >{''}</InputItem>
                         </div>)
                     }
 
                     return (
-                        <div className={`eat-select-item ${this.state.playActiveList[this.state.active] === index ? 'active-item' : ''}`} key={index} onTouchStart={this.handleTouchStart.bind(this, index)} onTouchEnd={this.handleTouchEnd}>
+                        <div className={`eat-select-item ${this.state.playActiveList[this.state.active] === index ? 'active-item' : ''}`} key={item.code} onTouchStart={this.handleTouchStart.bind(this, index)} onTouchEnd={this.handleTouchEnd}>
                             <span>{item.name}</span>
                         </div>
                     )
