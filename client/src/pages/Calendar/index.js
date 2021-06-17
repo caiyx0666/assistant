@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { InputItem } from 'antd-mobile'
 
+import $axios from "../../utils/axios";
+
 import './index.scss'
 
 import TodoList from './component/TodoList'
@@ -19,12 +21,21 @@ export default class Calendar extends Component {
         this.todoList = React.createRef()
     }
 
-    handleAdd = () => {
+    handleAdd = async () => {
+
+        const res = await $axios.post('/addTodoList', {
+            content: this.state.val
+        })
+
+        if (res.data.status === 200) {
+            console.log(res.data)
+        }
+
         let list = [];
         if (window.localStorage.getItem('TODOLIST')) {
             list = JSON.parse(window.localStorage.getItem('TODOLIST'))
         }
-        list.push({ label: this.state.val, checked: false, value: list.length, edit: false });
+        list.push({ content: this.state.val, checked: false, edit: false });
         window.localStorage.setItem('TODOLIST', JSON.stringify(list))
 
         // 更新数据

@@ -1,5 +1,4 @@
-const { connection } = require('./mysql/connection')
-
+const { connection } = require('./connection')
 
 /**
  * 获取今日事项
@@ -15,27 +14,31 @@ const getTodoList = (callback) => {
  * @param {function} callback
  */
 const addTodoList = (obj, callback) => {
-    const { createTime, content, code } = obj
-    connection.query('insert into todo_list values (? , ? , ? , false)', [content, createTime, code], callback);
+    connection.query('insert into todo_list set ?', [obj], callback);
 };
 
 /**
- * 修改今日事项
- * @param {object} obj 
- * @param {function} callback 
+ * 更新今日事项
+ * @param {object} obj
+ * @param {function} callback
  */
 const updataTodoList = (obj, callback) => {
-    const { content, code, finish } = obj
-    connection.query('update tode_list set content = ?,finish = ? where code = ?', [content, finish, code], callback)
+    const { content, finish, code } = obj
+    connection.query('update todo_list set content = ?, finish = ? where code = ?', [content, finish, code], callback)
 };
 
 /**
  * 删除今日事项
- * @param {string} code
+ * @param {Array} codes
  * @param {function} callback
  */
-const delTodeList = (code, callback) => {
-    connection.query('delete from todo_list where code = ?', [code], callback)
+const delTodeList = (codes, callback) => {
+    let str = ''
+    let list = codes.map(item => {
+        return `"${item}"`
+    })
+    str = list.join(',')
+    connection.query(`delete from todo_list where code in (${str})`, callback)
 }
 
 
@@ -138,24 +141,19 @@ const updataAccounts = (obj, callback) => {
     connection.query('update accounts set billList = ?, where code = ?', [bill, code], callback)
 };
 
-// /**
-//  * 新增英雄数据
-//  * @param {Object} obj 
-//  * @param {function} callback 
-//  */
-// // 新增英雄
-// const addHero = (obj, callback) => {
-//     connection.query('insert into heros set ?', [obj], callback);
-// };
-
-
-// /**
-//  * 删除单个英雄数据(软删除)
-//  * @param {id} string
-//  * @param {function} callback
-//  */
-// const delHeroById = (id, callback) => {
-//     connection.query('update heros set isdelete = 1 where id = ? and isdelete = 0', [id], callback)
-// };
-
-module.exports = { getTodoList, getEat, getMemo, getAccounts, updataTodoList, updataEat, updataMemo, updataAccounts, delTodeList, delMemo, addTodoList, addMemo, addAccounts, getMonthAccounts }
+module.exports = {
+    getTodoList,
+    updataTodoList,
+    addTodoList,
+    delTodeList,
+    getEat,
+    updataEat,
+    getMemo,
+    updataMemo,
+    addMemo,
+    delMemo,
+    getAccounts,
+    updataAccounts,
+    addAccounts,
+    getMonthAccounts
+}

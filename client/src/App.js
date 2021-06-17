@@ -87,7 +87,7 @@ class App extends Component {
       </List.Item>
       <List.Item key={1}
         thumb={(<i className='iconfont icon-shouye' style={{ fontSize: '.4375rem' }}></i>)}
-        style={{ backgroundColor: '#161d20', color: '#fff' }}
+        style={{ backgroundColor: '#161d20', color: '#fff', borderBottom: '1px solid #e4e4e4' }}
         activeStyle={{ backgroundColor: "#232e32" }}
         onClick={this.handleSkip.bind(this, '/home')}
       ><span style={{ color: '#fff', fontSize: '.34375rem' }}>首页</span></List.Item>
@@ -95,7 +95,7 @@ class App extends Component {
         return (
           item.path === '/skin' ? '' : <List.Item key={index + 2}
             thumb={(<i className={'iconfont ' + item.icon} style={{ fontSize: '.4375rem' }}></i>)}
-            style={{ backgroundColor: '#161d20', color: '#fff' }}
+            style={{ backgroundColor: '#161d20', color: '#fff', borderBottom: '1px solid #e4e4e4' }}
             activeStyle={{ backgroundColor: "#232e32" }}
             onClick={this.handleSkip.bind(this, item.path)}
           ><span style={{ color: '#fff', fontSize: '.34375rem' }}>{item.text}</span></List.Item>

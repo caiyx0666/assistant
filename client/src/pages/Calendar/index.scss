@@ -43,8 +43,26 @@
             padding-left: 0;
         }
 
+        .am-checkbox .am-list-line {
+            margin-left: 1rem;
+        }
+
         .am-list-line {
             margin-left: .25rem;
+        }
+
+        .am-checkbox.am-checkbox-checked .am-checkbox-inner {
+          @include base_bg_color();
+          @include base_border_color();
+        //   width: .5rem;
+        //   height: .5rem;
+
+        //   &:after {
+        //     width: .15rem;
+        //     height: .25rem;
+        //     top: .04rem;
+        //     left: .15rem;
+        //   }
         }
     }
 }

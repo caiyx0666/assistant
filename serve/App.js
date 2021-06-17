@@ -14,8 +14,9 @@ const bodyParser = require('body-parser')
 // 导入连接数据库模块
 const connection = require('./mysql/connection')
 
-// 导入管理英雄类接口的路由中间件函数,并进行解构
+// 导入接口的路由中间件函数,并进行解构
 const { eatRouter } = require('./router/eat')
+const { todoListRouter } = require('./router/todolist')
 
 // 导入上传文件的路由
 const uploadFile = require('./router/uploadFile')
@@ -45,6 +46,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 
 app.use(eatRouter)
+app.use(todoListRouter)
 app.use(uploadFile)
 
 // 记得放在路由后面

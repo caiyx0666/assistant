@@ -3,7 +3,7 @@ const { request, response } = require('express')
 const query = require('querystring')
 
 // 导入对数据库增删改查的方法模块,并进行结构，方便后续使用
-const { getEat, updataEat } = require('../model')
+const { getEat, updataEat } = require('../mysql/model')
 
 // 创建路由中间件函数，用户管理食物类的接口
 const eatRouter = express.Router()
