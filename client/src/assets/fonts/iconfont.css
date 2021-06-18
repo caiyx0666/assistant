@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2569961 */
-  src: url('iconfont.woff2?t=1623397213393') format('woff2'),
-       url('iconfont.woff?t=1623397213393') format('woff'),
-       url('iconfont.ttf?t=1623397213393') format('truetype');
+  src: url('iconfont.woff2?t=1623921886289') format('woff2'),
+       url('iconfont.woff?t=1623921886289') format('woff'),
+       url('iconfont.ttf?t=1623921886289') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-jia1:before {
+  content: "\e637";
+}
+
+.icon-tubiao:before {
+  content: "\e636";
+}
+
+.icon-detailed:before {
+  content: "\e608";
 }
 
 .icon-lvyou:before {

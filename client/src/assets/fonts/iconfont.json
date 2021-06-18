@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1472543",
+      "name": "加",
+      "font_class": "jia1",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "2790699",
+      "name": "图表",
+      "font_class": "tubiao",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "12225780",
+      "name": "明细",
+      "font_class": "detailed",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
       "icon_id": "657318",
       "name": "分期－旅游",
       "font_class": "lvyou",
