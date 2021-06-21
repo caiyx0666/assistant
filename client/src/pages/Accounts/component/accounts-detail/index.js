@@ -13,14 +13,15 @@ const nowYear = new Date().getFullYear();
 
 export default class AccountsDetail extends Component {
     state = {
-        income: 140.55,
-        disburse: 1056.12,
+        income: 0,
+        disburse: 0,
         month: nowMouth,
         year: nowYear,
         date: now,
         time: now,
         visible: false,
-        billList: []
+        billList: [],
+        edit: false
     }
 
     componentDidMount() {
@@ -165,7 +166,14 @@ export default class AccountsDetail extends Component {
 
             <div className="accounts-main">
                 {this.state.billList.map((item, index) => {
-                    return (<BillItem bill={item.bill} createTime={item.createTime} key={index} ></BillItem>)
+                    return (<BillItem
+                        bill={item.bill}
+                        createTime={item.createTime}
+                        key={index}
+                        edit={this.state.edit}
+                        handleEdit={(e) => { this.setState({ edit: e }) }}
+                        upData={this.updata.bind(this)}
+                    ></BillItem>)
                 })}
 
             </div>

@@ -130,15 +130,15 @@ const addAccounts = (obj, callback) => {
     connection.query('insert into accounts values (?,?,?,?,?,?)', [code, createTime, content, sum, icon, date], callback);
 };
 
-
 /**
- * 修改记账本数据
- * @param {object} obj
+ * 删除记账本数据
+ * @param {string} code
  * @param {function} callback
  */
-const updataAccounts = (obj, callback) => {
-    const { bill, code } = obj
-    connection.query('update accounts set billList = ?, where code = ?', [bill, code], callback)
+const delAccounts = (obj, callback) => {
+    const { code } = obj
+    console.log(code)
+    connection.query('delete from accounts where code = ?', [code], callback)
 };
 
 module.exports = {
@@ -153,7 +153,7 @@ module.exports = {
     addMemo,
     delMemo,
     getAccounts,
-    updataAccounts,
     addAccounts,
+    delAccounts,
     getMonthAccounts
 }

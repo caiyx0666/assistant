@@ -175,8 +175,9 @@ return：
 ```js
 {
     "status": 200,
-    "desc": '操作成功'
-    ...
+    "desc": '操作成功',
+    "data": [{code: 1231312,createTime: 12352131,content: '记账备注',sum: 12,icon: 'icon-canyin',date: 16121812},
+   	...]
 }
 ```
 
@@ -200,7 +201,7 @@ return：
 ```js
 {
     "status": 200,
-    "desc": '操作成功'
+    "desc": '操作成功',
    	"data": [{code: 1231312,createTime: 12352131,content: '记账备注',sum: 12,icon: 'icon-canyin',date: 16121812},
    	...]
 }
@@ -223,6 +224,30 @@ Data:
 | content | string | 备注     |
 | sum     | number | 金额     |
 | icon    | string | 字体图标 |
+
+return：
+
+```js
+{
+    "status": 200,
+    "desc": '操作成功'
+    ...
+}
+```
+
+
+
+##### 4.删除记账信息
+
+URL: `/delAccounts` 
+
+Method：`post`
+
+Data: 
+
+| 字段 | 类型   | 说明 |
+| ---- | ------ | ---- |
+| code | string | 标识 |
 
 return：
 
