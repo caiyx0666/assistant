@@ -6,6 +6,69 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1111974",
+      "name": "兼职",
+      "font_class": "jianzhi",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "1847809",
+      "name": "好评返现",
+      "font_class": "haopingfanxian",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "2256118",
+      "name": "工资",
+      "font_class": "gongzi",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "16485007",
+      "name": "礼金",
+      "font_class": "lijin",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "21101082",
+      "name": "理财",
+      "font_class": "licai",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "21715253",
+      "name": "其他",
+      "font_class": "qita",
+      "unicode": "e721",
+      "unicode_decimal": 59169
+    },
+    {
+      "icon_id": "17878305",
+      "name": "日 历",
+      "font_class": "rili1",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "3515864",
+      "name": "删减一位2",
+      "font_class": "shanjianyiwei2",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "5125851",
+      "name": "备注",
+      "font_class": "beizhu",
+      "unicode": "e6bf",
+      "unicode_decimal": 59071
+    },
+    {
       "icon_id": "1472543",
       "name": "加",
       "font_class": "jia1",
