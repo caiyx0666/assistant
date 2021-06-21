@@ -117,7 +117,7 @@ const getAccounts = (callback) => {
  */
 const getMonthAccounts = (obj, callback) => {
     const { startTime, endTime } = obj
-    connection.query('select * from accounts where createTime between ? and ?', [startTime, endTime], callback)
+    connection.query('select * from accounts where date between ? and ?', [startTime, endTime], callback)
 }
 
 /**
@@ -126,8 +126,8 @@ const getMonthAccounts = (obj, callback) => {
  * @param {function} callback
  */
 const addAccounts = (obj, callback) => {
-    const { createTime, content, code } = obj
-    connection.query('insert into todo_list values (? , ? , ? , false)', [content, createTime, code], callback);
+    const { code, createTime, content, sum, icon, date } = obj
+    connection.query('insert into accounts values (?,?,?,?,?,?)', [code, createTime, content, sum, icon, date], callback);
 };
 
 

@@ -160,3 +160,81 @@ return：
 
 
 
+### 记账本
+
+
+
+##### 1.获取所有记账信息
+
+URL: `/getAccounts` 
+
+Method：`post`
+
+return：
+
+```js
+{
+    "status": 200,
+    "desc": '操作成功'
+    ...
+}
+```
+
+
+
+##### 2.获取当前月份记账信息
+
+URL: `/getMonthAccounts`
+
+Method：`post`
+
+Data: 
+
+| 字段      | 类型   | 说明     |
+| --------- | ------ | -------- |
+| startTime | number | 起始时间 |
+| endTime   | number | 终止时间 |
+
+return：
+
+```js
+{
+    "status": 200,
+    "desc": '操作成功'
+   	"data": [{code: 1231312,createTime: 12352131,content: '记账备注',sum: 12,icon: 'icon-canyin',date: 16121812},
+   	...]
+}
+```
+
+
+
+
+
+##### 3.添加记账信息
+
+URL: `/addAccounts` 
+
+Method：`post`
+
+Data: 
+
+| 字段    | 类型   | 说明     |
+| ------- | ------ | -------- |
+| content | string | 备注     |
+| sum     | number | 金额     |
+| icon    | string | 字体图标 |
+
+return：
+
+```js
+{
+    "status": 200,
+    "desc": '操作成功'
+    ...
+}
+```
+
+
+
+
+

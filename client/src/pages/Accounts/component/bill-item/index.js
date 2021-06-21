@@ -56,28 +56,34 @@ export default class BillItem extends Component {
             }
         }
 
-        return (<div className="bill-wrapper">
-            <div className="bill-top">
-                <div>
-                    <span>{moment(this.props.createTime).format('MM月DD日')}</span>
-                    <span style={{ marginLeft: '.375rem' }}>{week()}</span>
-                </div>
-                {billTotal()}
-            </div>
-            {this.props.bill.map((item, index) => {
-                return (
-                    <div className="bill-item-wrapper" key={index}>
-                        <div className="icon-wrapper">
-                            <i className={'iconfont ' + item.icon}></i>
-                        </div>
-                        <div className="bill-item-right">
-                            <span className="category-text">{item.category}</span>
-                            <span className="sum-text">{item.sum}</span>
-                        </div>
+        if (this.props.bill.length) {
+            return (<div className="bill-wrapper">
+                <div className="bill-top">
+                    <div>
+                        <span>{moment(this.props.createTime).format('MM月DD日')}</span>
+                        <span style={{ marginLeft: '.375rem' }}>{week()}</span>
                     </div>
-                )
-            })}
-        </div>)
+                    {billTotal()}
+                </div>
+                {this.props.bill.map((item, index) => {
+                    return (
+                        <div className="bill-item-wrapper" key={index}>
+                            <div className="icon-wrapper">
+                                <i className={'iconfont ' + item.icon}></i>
+                            </div>
+                            <div className="bill-item-right">
+                                <span className="category-text">{item.content}</span>
+                                <span className="sum-text">{item.sum}</span>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>)
+
+        } else {
+            return ('')
+        }
+
     }
 }
 

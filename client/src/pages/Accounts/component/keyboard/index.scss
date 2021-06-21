@@ -1,0 +1,94 @@
+.keyboard-wrapper {
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    height: 6rem;
+    background-color: #f3f3f3;
+    left: 0;
+    right: 0;
+    transition-duration: .3s;
+    transition-property: all;
+
+    .keyboard-top {
+        position: relative;
+        display: flex;
+        padding: 0 .1875rem;
+        align-items: center;
+        height: 1rem;
+        border-bottom: 1px solid #e1e1e1;
+        font-size: .3125rem;
+
+        .keyboard-beizhu-icon {
+            @include base_color;
+            padding-right: .0625rem;
+            font-size: .25rem;
+        }
+
+        .keyboard-input {
+            flex: 1;
+            border: none;
+            background-color: rgba(0,0,0,0);
+            margin: 0 .25rem;
+        }
+
+        .keyboard-sum {
+            font-size: .625rem;
+        }
+
+        .keyboard-top-str {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: -.75rem;
+            right: 0;
+            border-radius: .1875rem;
+            background-color: #f3f3f3;
+            height: .75rem;
+            padding: 0 .25rem;
+        }
+    }
+
+    .keyboard-main {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .keyboard-main-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            height: 1.25rem;
+            font-size: .5rem;
+            border-right: 1px solid #e1e1e1;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .keyboard-main-item-active {
+            background-color: #d1d1d1;
+        }
+
+        .keyboard-main-item-notmargin {
+            border-right: none;
+        }
+        
+        .keyboard-main-item-rili {
+            font-size: .3125rem;
+        }
+
+        .rili-icon {
+            @include base_color;
+            font-size: .375rem;
+            padding-right: .0625rem;
+        }
+
+        .jian-icon {
+            font-size: .75rem;
+        }
+
+        .keyboard-main-item-confirm {
+            @include base_bg_color;
+            font-size: .4375rem;
+        }
+    }
+}
