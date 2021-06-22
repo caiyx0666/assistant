@@ -197,8 +197,8 @@ export default class keyboard extends Component {
                 visible={this.state.visible}
                 onOk={this.handleConfirmDate}
                 onDismiss={this.handleCancelDate}
-                minDate={new Date(nowYear, nowMouth - 1)}
-                maxDate={new Date(nowYear, nowMouth, 0)}
+                minDate={new Date(nowYear, 0, 1)}
+                maxDate={new Date()}
                 format='HH: mm'
             >
             </DatePicker>

@@ -126,8 +126,8 @@ const getMonthAccounts = (obj, callback) => {
  * @param {function} callback
  */
 const addAccounts = (obj, callback) => {
-    const { code, createTime, content, sum, icon, date } = obj
-    connection.query('insert into accounts values (?,?,?,?,?,?)', [code, createTime, content, sum, icon, date], callback);
+    const { code, createTime, content, sum, icon, date, category } = obj
+    connection.query('insert into accounts values (?,?,?,?,?,?,?)', [code, createTime, content, sum, icon, date, category], callback);
 };
 
 /**

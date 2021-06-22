@@ -42,7 +42,8 @@ export default class AccountsRecord extends Component {
             content: beizhu,
             date: date.getTime(),
             sum: this.state.active ? sum : -sum,
-            icon: expendIcons[this.state.iconActive].icon
+            icon: expendIcons[this.state.iconActive].icon,
+            category: expendIcons[this.state.iconActive].text,
         })
 
         if (res.data.status === 200) {
