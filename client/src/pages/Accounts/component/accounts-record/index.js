@@ -2,7 +2,7 @@ import { Component } from "react";
 import Keyboard from '../keyboard/index'
 import './index.scss'
 import $axios from '../../../../utils/axios'
-import { Toast } from "antd-mobile";
+import { Toast, Carousel } from "antd-mobile";
 
 const expendIcons = [
     { icon: 'icon-canyin', text: '餐饮' },
@@ -75,10 +75,26 @@ export default class AccountsRecord extends Component {
                 <span className={['accounts-state', this.state.active === 1 ? 'accounts-state-active' : ''].join(' ')} onClick={() => { this.setState({ active: 1 }) }}>收入</span>
                 <span className="accounts-cancel" onClick={() => { this.props.handleActiveChange(0) }}>取消</span>
             </div>
-            <div className="accounts-main" style={this.state.iconActive !== -1 ? { marginBottom: '4.5rem' } : { marginBottom: '0' }}>
-                {iconsHtml()}
 
-            </div>
+
+
+            <Carousel
+                selectedIndex={this.state.active}
+                dots={false}
+                beforeChange={(from, to) => { this.setState({ active: to }) }}
+            >
+
+                <div className="accounts-main" style={this.state.iconActive !== -1 ? { marginBottom: '4.5rem' } : { marginBottom: '0' }} key="1">
+                    {iconsHtml()}
+
+                </div>
+                <div className="accounts-main" style={this.state.iconActive !== -1 ? { marginBottom: '4.5rem' } : { marginBottom: '0' }} key="2">
+                    {iconsHtml()}
+
+                </div>
+
+            </Carousel>
+
             <Keyboard style={this.state.iconActive !== -1 ? { bottom: '0' } : { bottom: '-6.75rem' }} handleConfirmKeyboard={this.handleConfirm}></Keyboard>
         </div>)
     }
