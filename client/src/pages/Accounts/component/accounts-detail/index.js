@@ -31,7 +31,7 @@ export default class AccountsDetail extends Component {
     async updata() {
         let year = this.state.date.getFullYear()
         let month = this.state.date.getMonth() + 1;
-        const res = await $axios.post('/getMonthAccounts', {
+        const res = await $axios.post('/getScopeAccounts', {
             startTime: new Date(year, month - 1, 1).getTime(),
             endTime: new Date(year, month, 1).getTime(),
         })

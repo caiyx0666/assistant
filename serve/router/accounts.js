@@ -2,7 +2,7 @@ const express = require('express')
 const uuid = require('node-uuid')
 
 // 导入对数据库增删改查的方法模块,并进行结构，方便后续使用
-const { getAccounts, getMonthAccounts, addAccounts, delAccounts } = require('../mysql/model')
+const { getAccounts, getScopeAccounts, addAccounts, delAccounts } = require('../mysql/model')
 
 // 创建路由中间件函数，用户管理食物类的接口
 const accountsRouter = express.Router()
@@ -19,9 +19,9 @@ accountsRouter.post('/getAccounts', (request, response) => {
 })
 
 // 获取当前月份记账信息
-accountsRouter.post('/getMonthAccounts', (request, response) => {
+accountsRouter.post('/getScopeAccounts', (request, response) => {
     const { body } = request
-    getMonthAccounts(body, (err, results) => {
+    getScopeAccounts(body, (err, results) => {
         if (err) {
             response.json({ status: 400, desc: '操作失败' })
         } else {

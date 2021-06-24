@@ -1,0 +1,54 @@
+.accounts-chart-wrapper {
+    padding-top: 2.15rem;
+
+    .accounts-chart-top {
+        position: fixed;
+        top: 1.25rem;
+        left: 0;
+        right: 0;
+        @include base_bg_color;
+        border-top: 1px solid #fff;
+        color: #fff;
+        padding-bottom: .375rem;
+        z-index: 1;
+    }
+
+    .accounts-chart-scope {
+        height: .75rem;
+        display: flex;
+        align-items: center;
+        border-radius: .25rem;
+        margin: 0 .375rem;
+        border: 1px solid #fff;
+        overflow: hidden;
+
+        .chart-scope-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            flex: 1;
+
+            &:nth-child(2){
+                border-left: 1px solid #fff;
+                border-right: 1px solid #fff;
+            }
+        }
+
+        .scope-item-active {
+            background-color: #fff;
+            @include base_color;
+        }
+    }
+}
+.am-popover .am-popover-item-container {
+    height: .95rem !important;
+    color: #333;
+}
+
+.am-popover .am-popover-item-icon {
+    height: inherit !important;
+    width: inherit !important;
+    display: flex;
+    align-items: center;
+}

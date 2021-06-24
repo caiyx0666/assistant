@@ -183,9 +183,9 @@ return：
 
 
 
-##### 2.获取当前月份记账信息
+##### 2.获取范围内记账信息
 
-URL: `/getMonthAccounts`
+URL: `/getScopeAccounts`
 
 Method：`post`
 

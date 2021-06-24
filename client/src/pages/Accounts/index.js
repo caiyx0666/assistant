@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import AccountsDetail from './component/accounts-detail'
 import AccountsRecord from './component/accounts-record';
+import AccountsChart from './component/accounts-chart';
 import './index.scss'
 
 export default class Accounts extends Component {
     state = {
-        active: 0
+        active: 2
     }
 
     handleActiveChange = (index) => {
@@ -22,7 +23,7 @@ export default class Accounts extends Component {
                 case 1:
                     return (<AccountsRecord {...this.props} handleActiveChange={(index) => { this.handleActiveChange(index) }}></AccountsRecord>)
                 case 2:
-                    return (<div></div>)
+                    return (<AccountsChart></AccountsChart>)
                 default:
                     return (<div></div>)
             }
@@ -35,7 +36,7 @@ export default class Accounts extends Component {
                     <span>明细</span>
                 </div>
                 <div className={['nav-bar-item', this.state.active === 1 ? 'nav-bar-item-active' : ''].join(' ')} onClick={() => { this.setState({ active: 1 }) }}>
-                    <i className="iconfont icon-jia1 nav-bar-add" style={{ color: '#000' }}></i>
+                    <i className="iconfont icon-jia1 nav-bar-add" style={{ color: '#fff' }}></i>
                     <span>记账</span>
                 </div>
                 <div className={['nav-bar-item', this.state.active === 2 ? 'nav-bar-item-active' : ''].join(' ')} onClick={() => { this.setState({ active: 2 }) }}>

@@ -115,7 +115,7 @@ const getAccounts = (callback) => {
  * @param {object} obj
  * @param {function} callback
  */
-const getMonthAccounts = (obj, callback) => {
+const getScopeAccounts = (obj, callback) => {
     const { startTime, endTime } = obj
     connection.query('select * from accounts where date between ? and ?', [startTime, endTime], callback)
 }
@@ -155,5 +155,5 @@ module.exports = {
     getAccounts,
     addAccounts,
     delAccounts,
-    getMonthAccounts
+    getScopeAccounts
 }
