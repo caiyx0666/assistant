@@ -15,7 +15,7 @@ export default class AccountsChart extends Component {
         this.setState({
             active: e.key,
             visible: false
-        }, () => { this.chart.current.handleReset() })
+        }, () => { this.chart.current.getAccounts() })
     }
 
     constructor(props) {
@@ -23,7 +23,7 @@ export default class AccountsChart extends Component {
         this.state = {
             visible: false,
             active: '0',
-            scope: 2
+            scope: 0
         }
         this.chart = React.createRef()
     }

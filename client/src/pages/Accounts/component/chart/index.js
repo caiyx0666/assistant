@@ -138,15 +138,21 @@ export default class Chart extends Component {
             switch (this.props.timeUnit) {
                 case 0:
                     return this.getTimeScope().map((item, index) => {
-                        return (<span onClick={() => { this.setState({ scopeIndex: index }, () => { this.getAccounts() }) }} key={index} className={['time-scope-item', this.state.scopeIndex === index ? 'scope-item-active' : ''].join(' ')}>{`第${index}周`}</span>)
+                        return (<span onClick={() => { this.setState({ scopeIndex: index }, () => { this.getAccounts() }) }} key={index} className={['time-scope-item', this.state.scopeIndex === index ? 'scope-item-active' : ''].join(' ')}>
+                            {((item.startTime <= new Date().getTime()) && (item.endTime >= new Date().getTime())) ? '本周' : `第${index}周`}
+                        </span>)
                     })
                 case 1:
                     return this.getTimeScope().map((item, index) => {
-                        return (<span onClick={() => { this.setState({ scopeIndex: index }, () => { this.getAccounts() }) }} key={index} className={['time-scope-item', this.state.scopeIndex === index ? 'scope-item-active' : ''].join(' ')}>{new Date(item.startTime).getMonth() + 1 + '月'}</span>)
+                        return (<span onClick={() => { this.setState({ scopeIndex: index }, () => { this.getAccounts() }) }} key={index} className={['time-scope-item', this.state.scopeIndex === index ? 'scope-item-active' : ''].join(' ')}>
+                            {((item.startTime <= new Date().getTime()) && (item.endTime >= new Date().getTime())) ? '本月' : new Date(item.startTime).getMonth() + 1 + '月'}
+                        </span>)
                     })
                 case 2:
                     return this.getTimeScope().map((item, index) => {
-                        return (<span onClick={() => { this.setState({ scopeIndex: index }, () => { this.getAccounts() }) }} key={index} className={['time-scope-item', this.state.scopeIndex === index ? 'scope-item-active' : ''].join(' ')}>{new Date(item.startTime).getFullYear() + '年'}</span>)
+                        return (<span onClick={() => { this.setState({ scopeIndex: index }, () => { this.getAccounts() }) }} key={index} className={['time-scope-item', this.state.scopeIndex === index ? 'scope-item-active' : ''].join(' ')}>
+                            {((item.startTime <= new Date().getTime()) && (item.endTime >= new Date().getTime())) ? '今年' : new Date(item.startTime).getFullYear() + '年'}
+                        </span>)
                     })
                 default:
                     return ''

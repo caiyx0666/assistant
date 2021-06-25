@@ -6,7 +6,7 @@ import './index.scss'
 
 export default class Accounts extends Component {
     state = {
-        active: 2
+        active: 0
     }
 
     handleActiveChange = (index) => {

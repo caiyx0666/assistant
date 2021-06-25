@@ -119,10 +119,15 @@ function getData({ accounts, scope, timeUnit, baseColor }) {
 
     if (timeUnit === 0) {
         // 周
-
+        let day = moment(new Date().getTime()).format('M-DD')
         for (let i = scope.startTime; i <= scope.endTime; i += 24 * 60 * 60 * 1000) {
 
-            xDate.push({ value: moment(i).format('M-DD'), textStyle: { color: baseColor }, show: false })
+            if (moment(i).format('M-DD') === day) {
+                xDate.push({ value: '今天', textStyle: { color: baseColor } })
+                continue
+            }
+
+            xDate.push({ value: moment(i).format('M-DD'), textStyle: { color: baseColor } })
         }
 
         xDate.forEach(e => {
@@ -138,8 +143,12 @@ function getData({ accounts, scope, timeUnit, baseColor }) {
         })
     } else if (timeUnit === 1) {
         // 月
+        let date = new Date().getTime()
         for (let i = scope.startTime; i <= scope.endTime; i += 24 * 60 * 60 * 1000) {
-
+            if (((date - i) < 24 * 60 * 60 * 1000) && (i < date)) {
+                xDate.push({ value: '今天', textStyle: { color: baseColor } })
+                continue
+            }
             xDate.push({ value: new Date(i).getDate(), textStyle: { color: baseColor } })
         }
 
@@ -157,12 +166,14 @@ function getData({ accounts, scope, timeUnit, baseColor }) {
 
     } else if (timeUnit === 2) {
         // 年
-        console.log(accounts, scope)
-        let year = new Date(scope.startTime).getFullYear()
+        let month = new Date().getMonth()
         for (let i = 0; i < 12; i++) {
+            if (i === month) {
+                xDate.push({ value: '本月', textStyle: { color: baseColor } })
+                continue
+            }
             xDate.push({ value: i + 1, textStyle: { color: baseColor } })
         }
-        console.log(xDate)
         xDate.forEach(e => {
             let sum = 0;
             accounts.forEach(item => {
