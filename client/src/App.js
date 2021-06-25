@@ -8,9 +8,7 @@ import Home from './pages/Home'
 import Calendar from './pages/Calendar';
 import Eat from './pages/Eat';
 import Memo from './pages/Memo';
-import Throw from './pages/Throw';
 import Accounts from './pages/Accounts';
-import Skin from './pages/Skin';
 import Settings from './pages/Settings';
 
 class App extends Component {
@@ -56,10 +54,6 @@ class App extends Component {
       icon: 'icon-qianbi',
       text: '备忘录',
       path: '/memo'
-    }, {
-      icon: 'icon-paoyingbi',
-      text: '抛硬币',
-      path: '/throw'
     },
     {
       icon: 'icon-bill',
@@ -124,9 +118,8 @@ class App extends Component {
             <Route path="/calendar" component={Calendar} />
             <Route path="/eat" component={Eat} />
             <Route path="/memo" component={Memo} />
-            <Route path="/throw" component={Throw} />
             <Route path="/accounts" component={Accounts} />
-            <Route path="/skin" component={Skin} />
+            <Route path="/skin" />
             <Route path="/settings" component={Settings} />
           </Drawer>
         </Fragment>

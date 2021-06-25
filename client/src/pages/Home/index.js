@@ -46,10 +46,6 @@ export default class Home extends Component {
             icon: 'icon-qianbi',
             text: '备忘录',
             path: '/memo'
-        }, {
-            icon: 'icon-paoyingbi',
-            text: '抛硬币',
-            path: '/throw'
         },
         {
             icon: 'icon-bill',
