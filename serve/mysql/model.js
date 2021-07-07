@@ -65,10 +65,16 @@ const updataEat = (obj, callback) => {
 
 /**
  * 获取备忘录信息
+ * @param {object} obj
  * @param {function} callback
  */
-const getMemo = (callback) => {
-    connection.query('select * from memo', callback)
+const getMemo = (obj, callback) => {
+    const { title } = obj;
+    let sql = 'select * from memo'
+    if (title) {
+        sql += ` where title like '%${title}%'`
+    }
+    connection.query(sql, callback)
 };
 
 /**
@@ -77,8 +83,8 @@ const getMemo = (callback) => {
  * @param {function} callback
  */
 const addMemo = (obj, callback) => {
-    const { createTime, content, code } = obj
-    connection.query('insert into todo_list values (? , ? , ? , ?)', [content, createTime, createTime, code], callback);
+    const { content, title, code, createTime, updateTime } = obj
+    connection.query('insert into memo values (?,?,?,?,?)', [content, title, code, createTime, updateTime], callback);
 };
 
 /**
@@ -87,8 +93,8 @@ const addMemo = (obj, callback) => {
  * @param {function} callback
  */
 const updataMemo = (obj, callback) => {
-    const { content, time, code } = obj
-    connection.query('update memo set updateTime = ?,content = ? where code = ?', [time, content, code], callback)
+    const { content, title, updateTime, code } = obj
+    connection.query('update memo set updateTime = ?,title = ?,content = ? where code = ?', [updateTime, title, content, code], callback)
 };
 
 /**
@@ -98,6 +104,15 @@ const updataMemo = (obj, callback) => {
  */
 const delMemo = (code, callback) => {
     connection.query('delete from memo where code = ?', [code], callback)
+}
+
+/**
+ * 获取备忘录详情
+ * @param {string} code
+ * @param {function} callback
+ */
+const getMemoDetail = (code, callback) => {
+    connection.query('select * from memo where code = ?', [code], callback)
 }
 
 
@@ -132,14 +147,59 @@ const addAccounts = (obj, callback) => {
 
 /**
  * 删除记账本数据
- * @param {string} code
+ * @param {object} obj
  * @param {function} callback
  */
 const delAccounts = (obj, callback) => {
     const { code } = obj
-    console.log(code)
     connection.query('delete from accounts where code = ?', [code], callback)
 };
+
+/**
+ * 上传头像
+ * @param {object} obj
+ * @param {function} callback
+ */
+const uploadAcatar = (obj, callback) => {
+    const { updateTime, acatar, password, userName } = obj
+    connection.query('update user_info set updateTime = ?,acatar = ? where password = ? and userName = ?', [updateTime, acatar, password, userName], callback)
+}
+
+/**
+ * 获取用户信息
+ * @param {object} obj
+ * @param {function} callback
+ */
+const getUserInfo = (callback) => {
+    connection.query('select * from user_info', callback)
+}
+
+/**
+ * 注册
+ * @param {object} obj
+ * @param {function} callback
+ */
+const register = (obj, callback) => {
+    const { userName, password, acatar, theme, createTime } = obj;
+    connection.query('insert into user_info values (?,?,?,?,?)', [userName, password, acatar, theme, createTime], callback);
+}
+
+/**
+ * 查询是否存在用户数据
+ * @param {string} userName
+ * @returns {boolean}
+ */
+const paramsquery = (userName) => {
+    return new Promise((resolve, rejects) => {
+        connection.query('select * from user_info where userName = ?', [userName], (err, results) => {
+            if (err) {
+                rejects({ status: 400, desc: '查询失败' })
+            }
+            resolve({ status: 200, desc: '查询成功', data: results })
+        })
+    })
+}
+
 
 module.exports = {
     getTodoList,
@@ -152,8 +212,13 @@ module.exports = {
     updataMemo,
     addMemo,
     delMemo,
+    getMemoDetail,
     getAccounts,
     addAccounts,
     delAccounts,
-    getScopeAccounts
+    getScopeAccounts,
+    uploadAcatar,
+    getUserInfo,
+    paramsquery,
+    register
 }
