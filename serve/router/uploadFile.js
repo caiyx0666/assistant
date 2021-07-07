@@ -4,13 +4,17 @@ const path = require('path');
 
 // formdata 图片上传的第三方模块
 const formidable = require('formidable');
+const uuid = require('node-uuid')
+
+const { uploadAcatar, downloadAcatar } = require('../mysql/model');
+const { request, response } = require('express');
 
 // 创建路由
 const router = express.Router();
 
 
 // 中间写代码 -- 开始
-router.post('/uploadFile', (request, response) => {
+router.post('/uploadAcatar', (request, response) => {
     // 创建一个用于处理 formdata 的实例对象
     const form = new formidable.IncomingForm();
     // 上传文件的存储路径
@@ -31,22 +35,40 @@ router.post('/uploadFile', (request, response) => {
             // 从文件对象的 avatar 属性中，
             //    -  path 文件本地绝对路径，
             //    -  name 文件原本的名称
-            const { path: imgPath, name } = files.avatar;
-            // console.log({ imgPath, name });
+            const { path: imgPath, name } = files.file;
+
+            let code = uuid.v1().replace(/-/g, '')
+
+
             // path.basename()   提取字符串路径中的文件名部分
             const uploadName = path.basename(imgPath);
-            // console.log(uploadName);
-            response.json({ code: 200, msg: `${name} 上传成功`, src: uploadName });
+            let obj = {
+                code,
+                updateTime: new Date().getTime(),
+                imgPath: uploadName
+            }
+            uploadAcatar(obj, (err, results) => {
+                if (!err) {
+                    response.json({ status: 200, msg: `${name} 上传成功`, code });
+                } else {
+                    response.json({ status: 400, msg: '上传失败' });
+                }
+            })
         } else {
-            response.json({ code: 400, msg: '上传失败' });
+            response.json({ status: 400, msg: '上传失败' });
         }
     });
 });
 
-
-
-
-// 中间写代码 -- 结束
+router.get('/downloadAcatar', (request, response) => {
+    downloadAcatar(request.query, (err, results) => {
+        if (!err) {
+            response.json({ status: 200, desc: '操作成功', data: results })
+        } else {
+            response.json({ status: 400, desc: '操作失败' })
+        }
+    })
+})
 
 
 // 直接导出路由对象
