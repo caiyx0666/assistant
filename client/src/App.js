@@ -5,9 +5,12 @@ import { Drawer, List } from 'antd-mobile';
 
 // 引入页面组件
 import Home from './pages/Home'
+import Login from './pages/Login'
 import Calendar from './pages/Calendar';
 import Eat from './pages/Eat';
 import Memo from './pages/Memo';
+import MemoAdd from './pages/Memo/add/index'
+import MemoDetail from './pages/Memo/detail/index'
 import Accounts from './pages/Accounts';
 import Settings from './pages/Settings';
 
@@ -115,9 +118,12 @@ class App extends Component {
           >
             <Route path="/" exact render={() => (<Redirect to="/home" />)} />
             <Route path="/home" component={Home} />
+            <Route path="/login" component={Login} />
             <Route path="/calendar" component={Calendar} />
             <Route path="/eat" component={Eat} />
-            <Route path="/memo" component={Memo} />
+            <Route path="/memo" exact component={Memo} />
+            <Route path="/memo/add" component={MemoAdd} />
+            <Route path="/memo/detail" component={MemoDetail} />
             <Route path="/accounts" component={Accounts} />
             <Route path="/skin" />
             <Route path="/settings" component={Settings} />

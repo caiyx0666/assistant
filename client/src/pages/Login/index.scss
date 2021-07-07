@@ -1,0 +1,38 @@
+.login-wrapper {
+    padding: .5rem;
+
+    .logo-img {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: .375rem;
+    }
+
+    .login-form-wrapper {
+        background-color: #fff;
+        border-radius: .1875rem;
+        @include base_border_color;
+        padding: .375rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .am-list-item {
+        padding-bottom: .375rem;
+        width: 100%;
+        font-size: .375rem;
+
+        .am-input-label {
+            font-size: .3125rem;
+        }
+    }
+
+    .login-btn {
+        width: 90%;
+        height: .75rem;
+        line-height: .75rem;
+        font-size: .25rem;
+        margin-top: .1875rem;
+    }
+}
