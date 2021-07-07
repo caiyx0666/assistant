@@ -1,0 +1,30 @@
+.memo-add-wrapper {
+    padding-top: 1rem;
+    min-height: 100%;
+    background-color: #fff;
+
+    .am-navbar-light {
+        height: 1rem;
+        @include base_color;
+        border-bottom: 1px solid #eee;
+    }
+
+    .memo-add-top {
+        position: fixed;
+        top: 1.25rem;
+        left: 0;
+        right: 0;
+    }
+
+    .memo-main {
+        padding: .375rem;
+    }
+    
+    .title-input-wrapper {
+        padding: .1875rem 0;
+        border-bottom: 1px solid #ddd;
+        background-color: #fff;
+        margin-bottom: .375rem;
+    }
+    
+}

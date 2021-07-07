@@ -1,0 +1,98 @@
+.memo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .memo-search-wrapper {
+        width: 100%;
+        padding: .2rem .2rem;
+        background-color: #efeff4;
+    }
+
+    .memo-search {
+      width: 100%;
+      height: .8rem;
+      padding: 0;
+    }
+
+    .am-search-input {
+      height: 100%;
+      padding: 0 .25rem;
+
+      .am-search-synthetic-ph,
+      .am-search-value {
+        line-height: .8rem;
+        height: 100%;
+      }
+
+      .am-search-clear {
+          top: 50%;
+          right: .1875rem;
+          transform: translateY(-50%);
+          background-size: .4rem .4rem;
+      }
+
+      .am-search-synthetic-ph-icon {
+          width: .35rem;
+          height: .35rem;
+          background-size: .35rem .35rem;
+      }
+
+      .am-search-synthetic-ph-placeholder {
+        margin-left: .09375rem;
+      }
+    }
+
+    .memo-content-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 1.5rem;
+    }
+
+    .memo-card-wrapper {
+        width: 85%;
+        height: 2.4rem;
+        margin-top: .625rem;
+        padding: .1875rem;
+    }
+
+    .am-search.am-search-start .am-search-input input[type="search"] {
+        padding: 0 .7rem;
+    }
+
+    .memo-add-icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      right: .25rem;
+      bottom: .375rem;
+      @include base_bg_color;
+      width: 1.125rem;
+      height: 1.125rem;
+      border-radius: 50%;
+
+      .memo-add-icon {
+        font-size: .625rem;
+        color: #fff;
+      }
+    }
+    
+    .am-search-cancel {
+      @include base_color;
+    }
+
+    .am-card-footer-content {
+      text-align: left;
+      font-size: .3125rem;
+      color: #aaa;
+    }
+
+    .am-card-header {
+      font-size: .34375rem;
+      padding-bottom: .25rem;
+      color: #333;
+    }
+  }
