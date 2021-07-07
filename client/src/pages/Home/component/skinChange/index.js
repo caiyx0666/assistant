@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Modal } from 'antd-mobile';
+import $axios from '../../../../utils/axios'
 
 import './index.scss'
 
@@ -20,7 +21,12 @@ export default class Skinchange extends Component {
         });
     }
 
-    handleSkinChange(index) {
+    async handleSkinChange(index) {
+        const res = await $axios.post('/updateTheme', {
+            theme: `color${index + 1}`
+        })
+        if (res.data.status !== 200) return;
+        
         window.localStorage.setItem('theme', `color${index + 1}`);
         const theme = window.localStorage.getItem('theme');
         if (!theme) {

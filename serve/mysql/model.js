@@ -166,6 +166,18 @@ const uploadAcatar = (obj, callback) => {
 }
 
 /**
+ * 修改主题
+ * @param {object} obj
+ * @param {function} callback
+ */
+const updateTheme = (obj, callback) => {
+    const { updateTime, theme, userName } = obj
+    console.log(updateTime, theme, userName)
+    connection.query('update user_info set updateTime = ?,theme = ? where userName = ?', [updateTime, theme, userName], callback)
+}
+
+
+/**
  * 获取用户信息
  * @param {object} obj
  * @param {function} callback
@@ -219,6 +231,7 @@ module.exports = {
     delAccounts,
     getScopeAccounts,
     uploadAcatar,
+    updateTheme,
     getUserInfo,
     paramsquery,
     register

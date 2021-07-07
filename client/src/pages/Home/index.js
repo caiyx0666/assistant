@@ -50,7 +50,18 @@ export default class Home extends Component {
 
     async componentDidMount() {
         const res = await $axios.post('/getUserInfo')
-        if(res.data.status !== 200) return
+        if (res.data.status !== 200) return
+        
+
+        window.localStorage.setItem('theme', res.data.data.theme);
+        const theme = res.data.data.theme;
+        if (!theme) {
+            window.document.documentElement.setAttribute('data-theme', 'color1');
+        } else {
+            window.document.documentElement.setAttribute('data-theme', theme);
+        }
+
+
         this.setState({
             acatar: res.data.data.acatar
         })
