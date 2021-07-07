@@ -52,8 +52,7 @@ app.use(function (req, res, next) {
     }
 
     let token = req.headers['authorization'];
-    console.log(token)
-    if (token == undefined) {
+    if (!token) {
         return next();
     } else {
         vertoken.verToken(token).then((data) => {
