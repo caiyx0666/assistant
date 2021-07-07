@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import React from 'react'
+import $axios from '../../utils/axios'
 import Pic from '../../assets/image/tx2.png'
 import './index.scss'
 
@@ -17,7 +18,7 @@ export default class Home extends Component {
     }
 
     handleSkinChange() {
-        console.log(this.skinchange.current.showModal('skinModal')())
+        this.skinchange.current.showModal('skinModal')()
     }
 
     handleSkip = (path) => {
@@ -28,6 +29,18 @@ export default class Home extends Component {
             this.props.history.push(path)
         }
     }
+
+    FileChange = async (e) => {
+        let file = e.target.files[0];
+        console.log(file)
+
+        let data = new FormData()
+        data.append('file', file)
+
+        const res = await $axios.post('/uploadAcatar', data)
+        console.log(res)
+    }
+
     constructor(props) {
         super(props);
         this.skinchange = React.createRef();
@@ -65,6 +78,7 @@ export default class Home extends Component {
         return (<div className="home-wrapper" style={{ height: '100%' }}>
             <div className="tx-box">
                 <img src={Pic} className="tx-img" alt='加载失败' />
+                <input type="file" className="input-file" accept="image/jpeg,image/x-png,image/gif" onChange={(e) => { this.FileChange(e) }} />
             </div>
             <div className="home-menu-wrapper" style={{ paddingBottom: '.875rem' }}>
                 {menuList.map((item, index) => {
