@@ -28,9 +28,9 @@ export default class Eat extends Component {
     getFoods = async () => {
         let foods;
         let res = await $axios.get('/getEatList')
-        if (res.data.status === 200) {
-            foods = res.data.data
-        }
+        if (res.data.status !== 200) return;
+
+        foods = res.data.data
 
         foods = foods.map(item => {
             return { ...item, edit: false }
