@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { Toast } from 'antd-mobile'
+import BASE_URL from './url'
 
 const $axios = axios.create({
-    baseURL: 'http://localhost:3001',
+    baseURL: BASE_URL,
     timeout: 5000, // 表示请求的毫秒数，超过该时间，将停止发送请求
     headers: {
         Authorization: window.localStorage.getItem('token') ? window.localStorage.getItem('token') : ''

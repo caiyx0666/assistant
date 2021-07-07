@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import React from 'react'
 import $axios from '../../utils/axios'
-import Pic from '../../assets/image/tx2.png'
+import url from '../../utils/url'
 import './index.scss'
 
 import Skinchange from './component/skinChange/index'
@@ -9,7 +9,8 @@ import Skinchange from './component/skinChange/index'
 export default class Home extends Component {
     state = {
         docked: false,
-        skinDrawer: false
+        skinDrawer: false,
+        acatar: ''
     }
     onDock = () => {
         this.setState({
@@ -32,18 +33,27 @@ export default class Home extends Component {
 
     FileChange = async (e) => {
         let file = e.target.files[0];
-        console.log(file)
 
         let data = new FormData()
         data.append('file', file)
 
         const res = await $axios.post('/uploadAcatar', data)
-        console.log(res)
+        this.setState({
+            acatar: res.data.acatar
+        })
     }
 
     constructor(props) {
         super(props);
         this.skinchange = React.createRef();
+    }
+
+    async componentDidMount() {
+        const res = await $axios.post('/getUserInfo')
+        if(res.data.status !== 200) return
+        this.setState({
+            acatar: res.data.data.acatar
+        })
     }
 
     render() {
@@ -77,7 +87,7 @@ export default class Home extends Component {
 
         return (<div className="home-wrapper" style={{ height: '100%' }}>
             <div className="tx-box">
-                <img src={Pic} className="tx-img" alt='加载失败' />
+                <img src={url +'/'+ this.state.acatar} className="tx-img" alt='加载失败' />
                 <input type="file" className="input-file" accept="image/jpeg,image/x-png,image/gif" onChange={(e) => { this.FileChange(e) }} />
             </div>
             <div className="home-menu-wrapper" style={{ paddingBottom: '.875rem' }}>

@@ -13,10 +13,7 @@ const bodyParser = require('body-parser')
 
 // token校验
 const expressJWT = require('express-jwt')
-const jwt = require('jsonwebtoken')
-// const { vertoken } = require('./token/token_vertify')
 const { PRIVITE_KEY } = require('./token/confirm')
-// const jwtauth = require('./token/token_vertify')
 var vertoken = require('./token/token_vertify');
 
 // 导入接口的路由中间件函数,并进行解构
@@ -25,6 +22,7 @@ const { todoListRouter } = require('./router/todolist')
 const { accountsRouter } = require('./router/accounts')
 const { memoRouter } = require('./router/memo')
 const { loginRouter } = require('./router/login')
+const { userRouter} = require('./router/userInfo')
 
 // 导入上传文件的路由
 const uploadFile = require('./router/uploadFile')
@@ -85,6 +83,7 @@ app.use(accountsRouter)
 app.use(memoRouter)
 app.use(uploadFile)
 app.use(loginRouter)
+app.use(userRouter)
 
 // 如果上面所有的路由都匹配不上，类似我们之前的之前分支结构最后的 else
 app.use((request, response) => {

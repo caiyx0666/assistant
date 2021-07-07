@@ -6,8 +6,8 @@ const path = require('path');
 const formidable = require('formidable');
 const uuid = require('node-uuid')
 
-const { uploadAcatar, downloadAcatar } = require('../mysql/model');
-const { request, response } = require('express');
+const { uploadAcatar } = require('../mysql/model');
+const jwtauth = require('../token/token_vertify')
 
 // 创建路由
 const router = express.Router();
@@ -37,38 +37,39 @@ router.post('/uploadAcatar', (request, response) => {
             //    -  name 文件原本的名称
             const { path: imgPath, name } = files.file;
 
-            let code = uuid.v1().replace(/-/g, '')
-
-
             // path.basename()   提取字符串路径中的文件名部分
             const uploadName = path.basename(imgPath);
-            let obj = {
-                code,
-                updateTime: new Date().getTime(),
-                imgPath: uploadName
-            }
-            uploadAcatar(obj, (err, results) => {
-                if (!err) {
-                    response.json({ status: 200, msg: `${name} 上传成功`, code });
-                } else {
-                    response.json({ status: 400, msg: '上传失败' });
+            
+
+
+            let token = request.headers['authorization'];
+            jwtauth.verToken(token).then(data => {
+
+                let obj = {
+                    updateTime: new Date().getTime(),
+                    acatar: uploadName,
+                    ...data
                 }
+
+                uploadAcatar(obj, (err, results) => {
+                    if (!err) {
+                        response.json({ status: 200, msg: `${name} 上传成功`, acatar: uploadName });
+                    } else {
+                        response.json({ status: 400, msg: '上传失败' });
+                    }
+                })
+            }).catch(err => {
+                response.send({ status: 401, desc: '无效的token' })
             })
+
+
+
+            
         } else {
             response.json({ status: 400, msg: '上传失败' });
         }
     });
 });
-
-router.get('/downloadAcatar', (request, response) => {
-    downloadAcatar(request.query, (err, results) => {
-        if (!err) {
-            response.json({ status: 200, desc: '操作成功', data: results })
-        } else {
-            response.json({ status: 400, desc: '操作失败' })
-        }
-    })
-})
 
 
 // 直接导出路由对象

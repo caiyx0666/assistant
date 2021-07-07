@@ -161,8 +161,8 @@ const delAccounts = (obj, callback) => {
  * @param {function} callback
  */
 const uploadAcatar = (obj, callback) => {
-    const { updateTime, acatar, password, userName } = obj
-    connection.query('update user_info set updateTime = ?,acatar = ? where password = ? and userName = ?', [updateTime, acatar, password, userName], callback)
+    const { updateTime, acatar, userName } = obj
+    connection.query('update user_info set updateTime = ?,acatar = ? where userName = ?', [updateTime, acatar, userName], callback)
 }
 
 /**
@@ -170,8 +170,9 @@ const uploadAcatar = (obj, callback) => {
  * @param {object} obj
  * @param {function} callback
  */
-const getUserInfo = (callback) => {
-    connection.query('select * from user_info', callback)
+const getUserInfo = (obj,callback) => {
+    const { userName } = obj;
+    connection.query('select * from user_info where userName = ?',[userName], callback)
 }
 
 /**
