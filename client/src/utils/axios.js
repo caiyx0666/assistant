@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { Toast } from 'antd-mobile'
 import BASE_URL from './url'
+import { createHashHistory } from 'history'
+
+const history = createHashHistory()
 
 const $axios = axios.create({
     baseURL: BASE_URL,
@@ -10,7 +13,7 @@ const $axios = axios.create({
 $axios.interceptors.response.use((config) => {
     if (config.data.status === 401) {
         Toast.offline('请先进行登录',2)
-        window.location.href = '/#/login'
+        history.push('/login')
     }
     return config
 })
