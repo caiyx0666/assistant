@@ -133,7 +133,7 @@ function getData({ accounts, scope, timeUnit, baseColor }) {
         xDate.forEach(e => {
             let sum = 0;
             accounts.forEach(item => {
-                if (e.value === moment(item.date).format('M-DD')) {
+                if ((e.value === moment(item.date).format('M-DD')) || (e.value === '今天' && moment(item.date).format('M-DD') === moment(new Date().getTime()).format('M-DD'))) {
                     sum += item.sum
                 }
             })
@@ -155,7 +155,7 @@ function getData({ accounts, scope, timeUnit, baseColor }) {
         xDate.forEach(e => {
             let sum = 0;
             accounts.forEach(item => {
-                if (e.value === new Date(item.date).getDate()) {
+                if ((e.value === new Date(item.date).getDate()) || (e.value === '今天' && new Date(item.date).getDate() === new Date(new Date().getTime()).getDate())) {
                     sum += item.sum
                 }
             })
@@ -177,7 +177,7 @@ function getData({ accounts, scope, timeUnit, baseColor }) {
         xDate.forEach(e => {
             let sum = 0;
             accounts.forEach(item => {
-                if (e.value === (new Date(item.date).getMonth() + 1)) {
+                if ((e.value === (new Date(item.date).getMonth() + 1)) || (e.value === '本月' && new Date(item.date).getMonth() === new Date(new Date().getTime()).getMonth())) {
                     sum += item.sum
                 }
             })

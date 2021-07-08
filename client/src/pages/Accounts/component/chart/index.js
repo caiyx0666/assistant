@@ -16,6 +16,7 @@ import { CanvasRenderer } from 'echarts/renderers'
 import lineOption from './lineOption'
 
 import './index.scss'
+import moment from 'moment'
 echarts.use([LineChart, GridComponent, CanvasRenderer, TooltipComponent, TitleComponent, MarkPointComponent, MarkLineComponent])
 
 export default class Chart extends Component {
@@ -33,20 +34,23 @@ export default class Chart extends Component {
     }
 
     componentDidMount() {
-        this.handleReset();
+        this.setState({
+            scopeIndex: this.getTimeScope().length-1
+        }, () => {
+            this.chartSelect.current.scrollLeft = this.chartSelect.current.scrollWidth;
+            this.getAccounts()
+        })
     }
 
     getAccounts = async () => {
-
         const { startTime, endTime } = this.getTimeScope()[this.state.scopeIndex]
-
         const res = await $axios.post('/getScopeAccounts', {
             startTime,
             endTime
         })
-
         if (res.data.status === 200) {
-            let accounts = res.data.data.filter(item => {
+            let accounts = res.data.data
+            accounts = accounts.filter(item => {
                 if (this.props.incomeOrExpenses === '0') {
                     return item.sum < 0
                 } else {
@@ -54,13 +58,12 @@ export default class Chart extends Component {
                 }
             })
 
-            accounts.map(item => {
+            accounts = accounts.map(item => {
                 if (this.props.incomeOrExpenses === '0') {
                     item.sum = -item.sum
                 }
                 return item;
             })
-
 
             this.setState({
                 accounts
@@ -70,7 +73,7 @@ export default class Chart extends Component {
 
     handleReset = () => {
 
-        let now = new Date()
+        let now = new Date().getTime()
 
         this.getTimeScope().forEach((item, index) => {
             if (item.startTime <= now && now <= item.endTime) {
@@ -161,15 +164,12 @@ export default class Chart extends Component {
 
         }
 
-        const progressList = () => {
+        const progressList = (() => {
             let list = [];
             let total = 0;
-            this.state.accounts.forEach(item => {
+            const accounts = JSON.parse(JSON.stringify(this.state.accounts))
+            accounts.forEach(item => {
                 total += item.sum
-                if (!list.length) {
-                    list.push(item)
-                    return;
-                }
                 let index = 0;
                 list.forEach(e => {
                     if (e.category === item.category) {
@@ -183,7 +183,6 @@ export default class Chart extends Component {
                     list.push(item)
                 }
             })
-
             list = list.map(item => {
                 return {
                     ...item,
@@ -196,7 +195,7 @@ export default class Chart extends Component {
             })
 
             return list;
-        }
+        })()
 
         return (<div className="chart-wrapper">
 
@@ -208,7 +207,7 @@ export default class Chart extends Component {
                 echarts={echarts}
                 notMerge={true}
                 lazyUpdate={true}
-                option={lineOption({ accounts: this.state.accounts, scope: this.getTimeScope()[this.state.scopeIndex] || [], timeUnit: this.props.timeUnit })}
+                option={lineOption({ accounts: this.state.accounts || [], scope: this.getTimeScope()[this.state.scopeIndex] || [], timeUnit: this.props.timeUnit })}
                 echarts={echarts}
                 theme={"theme_name"}
                 style={{ width: '100%', height: '5rem', marginTop: '.2rem' }}
@@ -217,7 +216,7 @@ export default class Chart extends Component {
 
             <div className="ranking-list">
                 <h5 className="ranking-list-title">{this.props.incomeOrExpenses === '0' ? '支出排行榜' : '收入排行榜'}</h5>
-                {progressList().length ? progressList().map(item => {
+                {progressList.length ? progressList.map(item => {
                     return <ProgressChart key={item.code} icon={item.icon} category={item.category} rate={item.rate} value={item.sum}></ProgressChart>
                 }) : <div>{this.props.incomeOrExpenses === '0' ? '暂无支出' : '暂无收入'}</div>}
             </div>
