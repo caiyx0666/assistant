@@ -16,7 +16,6 @@ import { CanvasRenderer } from 'echarts/renderers'
 import lineOption from './lineOption'
 
 import './index.scss'
-import moment from 'moment'
 echarts.use([LineChart, GridComponent, CanvasRenderer, TooltipComponent, TitleComponent, MarkPointComponent, MarkLineComponent])
 
 export default class Chart extends Component {

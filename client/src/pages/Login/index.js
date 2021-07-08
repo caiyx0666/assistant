@@ -28,7 +28,7 @@ export default class Login extends Component {
 
     render() {
         return (<div className="login-wrapper">
-            <img src={logo} className="logo-img" />
+            <img src={logo} className="logo-img" alt="加载失败" />
 
             <div className="login-form-wrapper">
                 <InputItem
