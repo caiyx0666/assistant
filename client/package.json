@@ -16,8 +16,7 @@
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.0",
-    "babel-loader": "8.1.0",
-    "babel-plugin-import": "^1.13.3",
+    "babel-loader": "^8.2.2",
     "babel-plugin-named-asset-import": "^0.3.7",
     "babel-preset-react-app": "^10.0.0",
     "bfj": "^7.0.2",
@@ -154,18 +153,7 @@
     ],
     "resetMocks": true
   },
-  "babel": {
-    "plugins": [
-      [
-        "import",
-        {
-          "libraryName": "antd",
-          "style": "css"
-        }
-      ]
-    ],
-    "presets": [
-      "react-app"
-    ]
+  "devDependencies": {
+    "babel-plugin-import": "^1.13.3"
   }
 }
