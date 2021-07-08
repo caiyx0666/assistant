@@ -164,7 +164,7 @@ export default class AccountsDetail extends Component {
                 </div>
             </div>
 
-            <div className="accounts-main">
+            <div className="accounts-main" onClick={() => { this.setState({ edit: false })}}>
                 {this.state.billList.map((item, index) => {
                     return (<BillItem
                         bill={item.bill}
