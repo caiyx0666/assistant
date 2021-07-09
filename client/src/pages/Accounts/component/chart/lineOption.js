@@ -138,7 +138,7 @@ function getData({ accounts, scope, timeUnit, baseColor }) {
                 }
             })
             seriesData.push(sum)
-            totalSum += sum
+            totalSum += sum *100
 
         })
     } else if (timeUnit === 1) {
@@ -160,7 +160,7 @@ function getData({ accounts, scope, timeUnit, baseColor }) {
                 }
             })
             seriesData.push(sum)
-            totalSum += sum
+            totalSum += sum*100
 
         })
 
@@ -182,7 +182,7 @@ function getData({ accounts, scope, timeUnit, baseColor }) {
                 }
             })
             seriesData.push(sum)
-            totalSum += sum
+            totalSum += sum*100
 
         })
     }
@@ -190,7 +190,7 @@ function getData({ accounts, scope, timeUnit, baseColor }) {
     return {
         xDate,
         seriesData,
-        totalSum
+        totalSum: totalSum/100
     }
 }
 

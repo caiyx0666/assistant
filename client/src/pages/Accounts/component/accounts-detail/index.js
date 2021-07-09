@@ -67,9 +67,9 @@ export default class AccountsDetail extends Component {
             this.state.billList.forEach(item => {
                 item.bill.forEach(e => {
                     if (e.sum > 0) {
-                        income += e.sum
+                        income += e.sum *100
                     } else {
-                        disburse += e.sum
+                        disburse += e.sum *100
                     }
                 })
             })
@@ -77,8 +77,8 @@ export default class AccountsDetail extends Component {
 
 
             this.setState({
-                income,
-                disburse
+                income: income/100,
+                disburse: disburse/100
             })
         })
     }
@@ -125,6 +125,7 @@ export default class AccountsDetail extends Component {
         }
 
         const getDisburseDec = () => {
+            console.log(this.state.disburse)
             let num;
             if (String(this.state.disburse).indexOf('.') === -1) return '00'
             num = String(this.state.disburse).split('.')[1];
